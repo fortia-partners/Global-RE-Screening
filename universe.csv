@@ -1,0 +1,1012 @@
+ticker,name,country,category,vehicle
+PLD,Prologis,US,Logistics,REIT
+FR,First Industrial,US,Logistics,REIT
+EGP,EastGroup,US,Logistics,REIT
+STAG,STAG Industrial,US,Logistics,REIT
+TRNO,Terreno Realty,US,Logistics,REIT
+REXR,Rexford Industrial,US,Logistics,REIT
+LXP,LXP Industrial,US,Logistics,REIT
+COLD,Americold,US,Logistics,REIT
+IIPR,Innovative Industrial,US,Logistics,REIT
+SPG,Simon Property,US,Malls,REIT
+MAC,Macerich,US,Malls,REIT
+SKT,Tanger,US,Malls,REIT
+CBL,CBL Properties,US,Malls,REIT
+REG,Regency Centers,US,Retail,REIT
+KIM,Kimco Realty,US,Retail,REIT
+FRT,Federal Realty,US,Retail,REIT
+BRX,Brixmor,US,Retail,REIT
+PECO,Phillips Edison,US,Retail,REIT
+AKR,Acadia Realty,US,Retail,REIT
+UE,Urban Edge,US,Retail,REIT
+KRG,Kite Realty,US,Retail,REIT
+IVT,InvenTrust,US,Retail,REIT
+O,Realty Income,US,NetLease,REIT
+NNN,NNN REIT,US,NetLease,REIT
+ADC,Agree Realty,US,NetLease,REIT
+WPC,W. P. Carey,US,NetLease,REIT
+EPRT,Essential Properties,US,NetLease,REIT
+FCPT,Four Corners,US,NetLease,REIT
+GTY,Getty Realty,US,NetLease,REIT
+OLP,One Liberty,US,NetLease,REIT
+GOOD,Gladstone Commercial,US,NetLease,REIT
+SAFE,Safehold,US,NetLease,REIT
+AVB,AvalonBay,US,Multifamily,REIT
+EQR,Equity Residential,US,Multifamily,REIT
+ESS,Essex Property,US,Multifamily,REIT
+MAA,Mid-America Apartment,US,Multifamily,REIT
+CPT,Camden Property,US,Multifamily,REIT
+UDR,UDR,US,Multifamily,REIT
+NXRT,NexPoint Residential,US,Multifamily,REIT
+IRT,Independence Realty,US,Multifamily,REIT
+ELME,Elme Communities,US,Multifamily,REIT
+BRT,BRT Apartments,US,Multifamily,REIT
+VRE,Veris Residential,US,Multifamily,REIT
+INVH,Invitation Homes,US,SingleFamily,REIT
+AMH,American Homes 4 Rent,US,SingleFamily,REIT
+SUI,Sun Communities,US,SingleFamily,REIT
+ELS,Equity LifeStyle,US,SingleFamily,REIT
+BXP,BXP,US,Office,REIT
+VNO,Vornado,US,Office,REIT
+SLG,SL Green,US,Office,REIT
+KRC,Kilroy Realty,US,Office,REIT
+HIW,Highwoods,US,Office,REIT
+DEI,Douglas Emmett,US,Office,REIT
+JBGS,JBG SMITH,US,Office,REIT
+CUZ,Cousins Properties,US,Office,REIT
+PDM,Piedmont Office,US,Office,REIT
+BDN,Brandywine,US,Office,REIT
+CDP,COPT Defense,US,Office,REIT
+ESRT,Empire State Realty,US,Office,REIT
+HPP,Hudson Pacific,US,Office,REIT
+PGRE,Paramount Group,US,Office,REIT
+WELL,Welltower,US,Healthcare,REIT
+VTR,Ventas,US,Healthcare,REIT
+OHI,Omega Healthcare,US,Healthcare,REIT
+DOC,Healthpeak Properties,US,Healthcare,REIT
+CTRE,CareTrust,US,Healthcare,REIT
+SBRA,Sabra Health Care,US,Healthcare,REIT
+LTC,LTC Properties,US,Healthcare,REIT
+NHI,National Health Investors,US,Healthcare,REIT
+AHR,American Healthcare,US,Healthcare,REIT
+GMRE,Global Medical,US,Healthcare,REIT
+UHT,Universal Health Rlty,US,Healthcare,REIT
+EQIX,Equinix,US,DataCenter,REIT
+DLR,Digital Realty,US,DataCenter,REIT
+AMT,American Tower,US,Towers,REIT
+CCI,Crown Castle,US,Towers,REIT
+SBAC,SBA Communications,US,Towers,REIT
+PSA,Public Storage,US,SelfStorage,REIT
+EXR,Extra Space Storage,US,SelfStorage,REIT
+CUBE,CubeSmart,US,SelfStorage,REIT
+NSA,National Storage,US,SelfStorage,REIT
+HST,Host Hotels,US,Hotels,REIT
+PK,Park Hotels,US,Hotels,REIT
+RHP,Ryman Hospitality,US,Hotels,REIT
+APLE,Apple Hospitality,US,Hotels,REIT
+SHO,Sunstone Hotel,US,Hotels,REIT
+DRH,DiamondRock,US,Hotels,REIT
+PEB,Pebblebrook,US,Hotels,REIT
+XHR,Xenia Hotels,US,Hotels,REIT
+RLJ,RLJ Lodging,US,Hotels,REIT
+SVC,Service Properties,US,Hotels,REIT
+WY,Weyerhaeuser,US,Timber,REIT
+PCH,PotlatchDeltic,US,Timber,REIT
+RYN,Rayonier,US,Timber,REIT
+FPI,Farmland Partners,US,Farmland,REIT
+LAND,Gladstone Land,US,Farmland,REIT
+VICI,VICI Properties,US,Gaming,REIT
+GLPI,Gaming & Leisure,US,Gaming,REIT
+IRM,Iron Mountain,US,Diversified,REIT
+LAMR,Lamar Advertising,US,Diversified,REIT
+OUT,OUTFRONT Media,US,Diversified,REIT
+CXW,CoreCivic,US,Diversified,REIT
+GEO,GEO Group,US,Diversified,REIT
+WSR,Whitestone REIT,US,Diversified,REIT
+ALEX,Alexander & Baldwin,US,Diversified,REIT
+ARE,Alexandria Real Estate,US,Diversified,REIT
+NLY,Annaly Capital,US,Mortgage,MORTGAGE
+AGNC,AGNC Investment,US,Mortgage,MORTGAGE
+STWD,Starwood Property,US,Mortgage,MORTGAGE
+BXMT,Blackstone Mortgage,US,Mortgage,MORTGAGE
+RITM,Rithm Capital,US,Mortgage,MORTGAGE
+ABR,Arbor Realty,US,Mortgage,MORTGAGE
+LADR,Ladder Capital,US,Mortgage,MORTGAGE
+MFA,MFA Financial,US,Mortgage,MORTGAGE
+CIM,Chimera,US,Mortgage,MORTGAGE
+PMT,PennyMac Mortgage,US,Mortgage,MORTGAGE
+DX,Dynex Capital,US,Mortgage,MORTGAGE
+ARI,Apollo Commercial,US,Mortgage,MORTGAGE
+KREF,KKR Real Estate,US,Mortgage,MORTGAGE
+NYMT,New York Mortgage,US,Mortgage,MORTGAGE
+EFC,Ellington Financial,US,Mortgage,MORTGAGE
+RC,Ready Capital,US,Mortgage,MORTGAGE
+ORC,Orchid Island,US,Mortgage,MORTGAGE
+IVR,Invesco Mortgage,US,Mortgage,MORTGAGE
+TWO,Two Harbors,US,Mortgage,MORTGAGE
+GPMT,Granite Point,US,Mortgage,MORTGAGE
+DHI,D.R. Horton,US,Developer,DEVELOPER
+LEN,Lennar,US,Developer,DEVELOPER
+PHM,PulteGroup,US,Developer,DEVELOPER
+NVR,NVR,US,Developer,DEVELOPER
+TOL,Toll Brothers,US,Developer,DEVELOPER
+KBH,KB Home,US,Developer,DEVELOPER
+MTH,Meritage Homes,US,Developer,DEVELOPER
+TMHC,Taylor Morrison,US,Developer,DEVELOPER
+MHO,M/I Homes,US,Developer,DEVELOPER
+GRBK,Green Brick,US,Developer,DEVELOPER
+HHH,Howard Hughes,US,Developer,DEVELOPER
+FOR,Forestar,US,Developer,DEVELOPER
+LGIH,LGI Homes,US,Developer,DEVELOPER
+CCS,Century Communities,US,Developer,DEVELOPER
+CBRE,CBRE Group,US,Services,SERVICES
+JLL,Jones Lang LaSalle,US,Services,SERVICES
+CWK,Cushman & Wakefield,US,Services,SERVICES
+NMRK,Newmark Group,US,Services,SERVICES
+MMI,Marcus & Millichap,US,Services,SERVICES
+ZG,Zillow Group,US,Services,SERVICES
+OPEN,Opendoor,US,Services,SERVICES
+EXPI,eXp World,US,Services,SERVICES
+COMP,Compass,US,Services,SERVICES
+RDFN,Redfin,US,Services,SERVICES
+SGRO.L,SEGRO,GB,Logistics,REIT
+BBOX.L,Tritax Big Box,GB,Logistics,REIT
+LMP.L,LondonMetric Property,GB,Logistics,REIT
+WHR.L,Warehouse REIT,GB,Logistics,REIT
+SHED.L,Urban Logistics REIT,GB,Logistics,REIT
+EBOX.L,Tritax EuroBox,GB,Logistics,REIT
+BLND.L,British Land,GB,Diversified,REIT
+LAND.L,Landsec,GB,Diversified,REIT
+DLN.L,Derwent London,GB,Office,REIT
+GPE.L,Great Portland Estates,GB,Office,REIT
+HLCL.L,Helical,GB,Office,REIT
+WKP.L,Workspace Group,GB,Office,REIT
+CLI.L,CLS Holdings,GB,Office,REIT
+RGL.L,Regional REIT,GB,Office,REIT
+HMSO.L,Hammerson,GB,Malls,REIT
+SHC.L,Shaftesbury Capital,GB,Retail,REIT
+SUPR.L,Supermarket Income REIT,GB,Retail,REIT
+NRR.L,NewRiver REIT,GB,Retail,REIT
+CAL.L,Capital & Regional,GB,Retail,REIT
+PHP.L,Primary Health Properties,GB,Healthcare,REIT
+AGR.L,Assura,GB,Healthcare,REIT
+THRL.L,Target Healthcare REIT,GB,Senior,REIT
+IHR.L,Impact Healthcare REIT,GB,Senior,REIT
+BYG.L,Big Yellow Group,GB,SelfStorage,REIT
+SAFE.L,Safestore,GB,SelfStorage,REIT
+UTG.L,Unite Group,GB,Student,REIT
+ESP.L,Empiric Student Property,GB,Student,REIT
+GRI.L,Grainger,GB,Multifamily,REIT
+PSDL.L,Phoenix Spree Deutschland,GB,Multifamily,REIT
+SRE.L,Sirius Real Estate,GB,Diversified,REIT
+PCTN.L,Picton Property,GB,Diversified,REIT
+CREI.L,Custodian Property,GB,Diversified,REIT
+SREI.L,Schroder REIT,GB,Diversified,REIT
+AEWU.L,AEW UK REIT,GB,Diversified,REIT
+BCPT.L,Balanced Commercial Property,GB,Diversified,REIT
+BKG.L,Berkeley Group,GB,Developer,DEVELOPER
+BTRW.L,Barratt Redrow,GB,Developer,DEVELOPER
+PSN.L,Persimmon,GB,Developer,DEVELOPER
+TW.L,Taylor Wimpey,GB,Developer,DEVELOPER
+BWY.L,Bellway,GB,Developer,DEVELOPER
+VTY.L,Vistry Group,GB,Developer,DEVELOPER
+CRST.L,Crest Nicholson,GB,Developer,DEVELOPER
+MCS.L,McCarthy & Stone,GB,Developer,DEVELOPER
+SVS.L,Savills,GB,Services,SERVICES
+RMV.L,Rightmove,GB,Services,SERVICES
+FOXT.L,Foxtons,GB,Services,SERVICES
+GFTU.L,Grafton Group,GB,Services,SERVICES
+LABS.L,Life Science REIT,GB,Office,REIT
+HWG.L,Harworth Group,GB,Developer,REIT
+TOWN.L,Town Centre Securities,GB,Diversified,REIT
+RLE.L,Real Estate Investors,GB,Diversified,REIT
+PCA.L,Palace Capital,GB,Diversified,REIT
+PRSR.L,PRS REIT,GB,Multifamily,REIT
+RESI.L,Residential Secure Income,GB,Multifamily,REIT
+SOHO.L,Triple Point Social Housing,GB,Multifamily,REIT
+SERE.L,Schroder European REIT,GB,Diversified,REIT
+ASLI.L,abrdn European Logistics,GB,Logistics,REIT
+AIRE.L,Alternative Income REIT,GB,Diversified,REIT
+GRIO.L,Ground Rents Income Fund,GB,NetLease,REIT
+SPR.L,Springfield Properties,GB,Developer,DEVELOPER
+GLE.L,MJ Gleeson,GB,Developer,DEVELOPER
+WJG.L,Watkin Jones,GB,Developer,DEVELOPER
+BOOT.L,Henry Boot,GB,Developer,DEVELOPER
+MGNS.L,Morgan Sindall,GB,Developer,DEVELOPER
+KIE.L,Kier Group,GB,Developer,DEVELOPER
+GFRD.L,Galliford Try,GB,Developer,DEVELOPER
+URW.AS,Unibail-Rodamco-Westfield,FR,Malls,REIT
+LI.PA,Klepierre,FR,Malls,REIT
+MERY.PA,Mercialys,FR,Retail,REIT
+CARM.PA,Carmila,FR,Retail,REIT
+GFC.PA,Gecina,FR,Office,REIT
+COV.PA,Covivio,FR,Diversified,REIT
+ICAD.PA,Icade,FR,Office,REIT
+FLY.PA,Societe Fonciere Lyonnaise,FR,Office,REIT
+CGR.PA,Cegereal,FR,Office,REIT
+ARG.PA,Argan,FR,Logistics,REIT
+PAR.PA,Paref,FR,Diversified,REIT
+SELER.PA,Selectirente,FR,Retail,REIT
+COVH.PA,Covivio Hotels,FR,Hotels,REIT
+NXI.PA,Nexity,FR,Developer,DEVELOPER
+KOF.PA,Kaufman & Broad,FR,Developer,DEVELOPER
+ALTA.PA,Altarea,FR,Developer,DEVELOPER
+INEA.PA,Fonciere INEA,FR,Office,REIT
+IMDA.PA,Immobiliere Dassault,FR,Office,REIT
+FREY.PA,Frey,FR,Retail,REIT
+BASS.PA,Bassac,FR,Developer,DEVELOPER
+VNA.DE,Vonovia,DE,Multifamily,REIT
+LEG.DE,LEG Immobilien,DE,Multifamily,REIT
+TEG.DE,TAG Immobilien,DE,Multifamily,REIT
+GYC.DE,Grand City Properties,DE,Multifamily,REIT
+ADJ.DE,Adler Group,DE,Multifamily,REIT
+AT1.DE,Aroundtown,DE,Diversified,REIT
+BRNK.DE,Branicks Group,DE,Office,REIT
+HABA.DE,Hamborner REIT,DE,Diversified,REIT
+DEQ.DE,Deutsche EuroShop,DE,Malls,REIT
+DKG.DE,Deutsche Konsum REIT,DE,Retail,REIT
+VIB3.DE,VIB Vermoegen,DE,Logistics,REIT
+DIC.DE,DIC Asset,DE,Office,REIT
+INS.DE,Instone Real Estate,DE,Developer,DEVELOPER
+UTDI.DE,United Internet,DE,Developer,DEVELOPER
+PAT.DE,PATRIZIA,DE,Services,SERVICES
+SCR.DE,Scout24,DE,Services,SERVICES
+DEF.DE,DEFAMA Deutsche Fachmarkt,DE,Retail,REIT
+DMRE.DE,DEMIRE,DE,Office,REIT
+ACC.DE,Accentro Real Estate,DE,Multifamily,REIT
+NUVA.DE,Noratis,DE,Multifamily,REIT
+H5E.DE,Helma Eigenheimbau,DE,Developer,DEVELOPER
+WHA.AS,Wereldhave,NL,Retail,REIT
+ECMPA.AS,Eurocommercial Properties,NL,Retail,REIT
+VASTN.AS,Vastned Retail,NL,Retail,REIT
+NSI.AS,NSI NV,NL,Office,REIT
+BAMNB.AS,BAM Groep,NL,Developer,DEVELOPER
+HEIJM.AS,Heijmans,NL,Developer,DEVELOPER
+WDP.BR,Warehouses De Pauw,BE,Logistics,REIT
+VGP.BR,VGP NV,BE,Logistics,REIT
+INTO.BR,Intervest Offices & Warehouses,BE,Logistics,REIT
+COFB.BR,Cofinimmo,BE,Healthcare,REIT
+AED.BR,Aedifica,BE,Senior,REIT
+CPINV.BR,Care Property Invest,BE,Senior,REIT
+SHUR.BR,Shurgard Self Storage,BE,SelfStorage,REIT
+RET.BR,Retail Estates,BE,Retail,REIT
+ASC.BR,Ascencio,BE,Retail,REIT
+XIOR.BR,Xior Student Housing,BE,Student,REIT
+HOMI.BR,Home Invest Belgium,BE,Multifamily,REIT
+WEB.BR,Warehouses Estates Belgium,BE,Logistics,REIT
+NEXTA.BR,Nextensa,BE,Diversified,REIT
+MONT.BR,Montea,BE,Logistics,REIT
+WEHB.BR,Wereldhave Belgium,BE,Retail,REIT
+ATEB.BR,Atenor,BE,Developer,DEVELOPER
+IMMO.BR,Immobel,BE,Developer,DEVELOPER
+MRL.MC,MERLIN Properties,ES,Diversified,REIT
+COL.MC,Inmobiliaria Colonial,ES,Office,REIT
+LRE.MC,Lar Espana,ES,Malls,REIT
+ISUR.MC,Inmobiliaria del Sur,ES,Diversified,REIT
+HOME.MC,Neinor Homes,ES,Developer,DEVELOPER
+AEDAS.MC,Aedas Homes,ES,Developer,DEVELOPER
+MVC.MC,Metrovacesa,ES,Developer,DEVELOPER
+RLIA.MC,Realia Business,ES,Developer,DEVELOPER
+ARM.MC,Arima Real Estate,ES,Office,REIT
+REN.MC,Renta Corporacion,ES,Developer,DEVELOPER
+EGL.LS,Mota-Engil,PT,Developer,DEVELOPER
+CAST.ST,Castellum,SE,Diversified,REIT
+FABG.ST,Fabege,SE,Office,REIT
+BALD-B.ST,Fastighets AB Balder,SE,Multifamily,REIT
+WALL-B.ST,Wallenstam,SE,Multifamily,REIT
+HEBA-B.ST,HEBA Fastighets,SE,Multifamily,REIT
+HUFV-A.ST,Hufvudstaden,SE,Office,REIT
+ATRLJ-B.ST,Atrium Ljungberg,SE,Diversified,REIT
+WIHL.ST,Wihlborgs Fastigheter,SE,Office,REIT
+DIOS.ST,Dios Fastigheter,SE,Office,REIT
+PLAZ-B.ST,Platzer Fastigheter,SE,Office,REIT
+FPAR-A.ST,FastPartner,SE,Diversified,REIT
+SAGA-B.ST,Sagax,SE,Logistics,REIT
+CATE.ST,Catena,SE,Logistics,REIT
+COREM-B.ST,Corem Property,SE,Diversified,REIT
+NYF.ST,Nyfosa,SE,Diversified,REIT
+NP3.ST,NP3 Fastigheter,SE,Diversified,REIT
+SBB-B.ST,Samhallsbyggnadsbolaget,SE,Diversified,REIT
+CIBUS.ST,Cibus Nordic Real Estate,SE,Retail,REIT
+PNDX-B.ST,Pandox,SE,Hotels,REIT
+LOGI-B.ST,Logistea,SE,Logistics,REIT
+STEF-B.ST,Stendorren Fastigheter,SE,Logistics,REIT
+SKA-B.ST,Skanska,SE,Developer,DEVELOPER
+JM.ST,JM AB,SE,Developer,DEVELOPER
+PEAB-B.ST,Peab,SE,Developer,DEVELOPER
+BONAV-B.ST,Bonava,SE,Developer,DEVELOPER
+EMIL-B.ST,Fastighets AB Emilshus,SE,Diversified,REIT
+NEOBO.ST,Neobo Fastigheter,SE,Multifamily,REIT
+K2A-B.ST,K2A Knaust & Andersson,SE,Multifamily,REIT
+JOMA.ST,John Mattson Fastighets,SE,Multifamily,REIT
+GEG.ST,Genova Property,SE,Diversified,REIT
+ANNE-B.ST,Annehem Fastigheter,SE,Diversified,REIT
+NIVI-B.ST,Nivika Fastigheter,SE,Diversified,REIT
+PRISMA.ST,Prisma Properties,SE,Retail,REIT
+ENTRA.OL,Entra ASA,NO,Office,REIT
+OLT.OL,Olav Thon Eiendomsselskap,NO,Retail,REIT
+PPI.OL,Public Property Invest,NO,Office,REIT
+SBO.OL,Selvaag Bolig,NO,Developer,DEVELOPER
+KOJAMO.HE,Kojamo,FI,Multifamily,REIT
+CTY1S.HE,Citycon,FI,Retail,REIT
+YIT.HE,YIT,FI,Developer,DEVELOPER
+SRV1V.HE,SRV Yhtiot,FI,Developer,DEVELOPER
+INVEST.HE,Investors House,FI,Diversified,REIT
+OVARO.HE,Ovaro Kiinteistosijoitus,FI,Multifamily,REIT
+JDAN.CO,Jeudan,DK,Office,REIT
+SPSN.SW,Swiss Prime Site,CH,Diversified,REIT
+PSPN.SW,PSP Swiss Property,CH,Office,REIT
+ALLN.SW,Allreal Holding,CH,Diversified,REIT
+MOBN.SW,Mobimo Holding,CH,Diversified,REIT
+INTS.SW,Intershop Holding,CH,Diversified,REIT
+ZUGN.SW,Zug Estates,CH,Diversified,REIT
+HIAG.SW,HIAG Immobilien,CH,Diversified,REIT
+IREN.SW,Investis Holding,CH,Multifamily,REIT
+NREN.SW,Novavest Real Estate,CH,Multifamily,REIT
+PLAZ.SW,Plazza AG,CH,Multifamily,REIT
+SFPN.SW,SF Urban Properties,CH,Diversified,REIT
+INA.SW,Ina Invest,CH,Developer,REIT
+PEAN.SW,Peach Property Group,CH,Multifamily,REIT
+WARN.SW,Warteck Invest,CH,Diversified,REIT
+IMPN.SW,Implenia,CH,Developer,DEVELOPER
+CAI.VI,CA Immobilien,AT,Office,REIT
+IIA.VI,Immofinanz,AT,Diversified,REIT
+SPI.VI,S IMMO,AT,Diversified,REIT
+WXF.VI,Warimpex,AT,Hotels,REIT
+IGD.MI,Immobiliare Grande Distribuzione,IT,Malls,REIT
+GTC.WA,Globe Trade Centre,PL,Office,REIT
+POS.VI,Porr,AT,Developer,DEVELOPER
+STR.VI,Strabag,AT,Developer,DEVELOPER
+GAB.MI,Gabetti Property Solutions,IT,Services,REIT
+ABT.MI,Abitare In,IT,Developer,REIT
+BRIQ.AT,Briq Properties,GR,Diversified,REIT
+DOM.WA,Dom Development,PL,Developer,DEVELOPER
+DVL.WA,Develia,PL,Developer,DEVELOPER
+ECH.WA,Echo Investment,PL,Developer,DEVELOPER
+1AT.WA,Atal,PL,Developer,DEVELOPER
+ARH.WA,Archicom,PL,Developer,DEVELOPER
+MVP.WA,Marvipol Development,PL,Developer,DEVELOPER
+LKD.WA,Lokum Deweloper,PL,Developer,DEVELOPER
+JWC.WA,J.W. Construction,PL,Developer,DEVELOPER
+RON.WA,Ronson Development,PL,Developer,DEVELOPER
+IRES.IR,Irish Residential Properties,IE,Multifamily,REIT
+C5H.IR,Cairn Homes,IE,Developer,DEVELOPER
+GVR.IR,Glenveagh Properties,IE,Developer,DEVELOPER
+TRASTOR.AT,Trastor REIC,GR,Diversified,REIT
+PREMIA.AT,Premia Properties,GR,Diversified,REIT
+LAMDA.AT,LAMDA Development,GR,Developer,DEVELOPER
+REI-UN.TO,RioCan REIT,CA,Retail,REIT
+SRU-UN.TO,SmartCentres REIT,CA,Retail,REIT
+FCR-UN.TO,First Capital REIT,CA,Retail,REIT
+CRT-UN.TO,CT REIT,CA,NetLease,REIT
+CRR-UN.TO,Crombie REIT,CA,Retail,REIT
+PMZ-UN.TO,Plaza Retail REIT,CA,Retail,REIT
+CHP-UN.TO,Choice Properties REIT,CA,Diversified,REIT
+GRT-UN.TO,Granite REIT,CA,Logistics,REIT
+DIR-UN.TO,Dream Industrial REIT,CA,Logistics,REIT
+AP-UN.TO,Allied Properties REIT,CA,Office,REIT
+D-UN.TO,Dream Office REIT,CA,Office,REIT
+CAR-UN.TO,Canadian Apartment Properties,CA,Multifamily,REIT
+IIP-UN.TO,InterRent REIT,CA,Multifamily,REIT
+BEI-UN.TO,Boardwalk REIT,CA,Multifamily,REIT
+KMP-UN.TO,Killam Apartment REIT,CA,Multifamily,REIT
+NWH-UN.TO,NorthWest Healthcare REIT,CA,Healthcare,REIT
+HR-UN.TO,H&R REIT,CA,Diversified,REIT
+AX-UN.TO,Artis REIT,CA,Diversified,REIT
+SGR-UN.TO,Slate Grocery REIT,CA,Retail,REIT
+BN.TO,Brookfield Corporation,CA,Services,SERVICES
+FSV.TO,FirstService,CA,Services,SERVICES
+CIGI.TO,Colliers,CA,Services,SERVICES
+GMG.AX,Goodman Group,AU,Logistics,REIT
+CIP.AX,Centuria Industrial REIT,AU,Logistics,REIT
+SCG.AX,Scentre Group,AU,Malls,REIT
+VCX.AX,Vicinity Centres,AU,Malls,REIT
+CQR.AX,Charter Hall Retail REIT,AU,Retail,REIT
+HDN.AX,HomeCo Daily Needs,AU,Retail,REIT
+BWP.AX,BWP Trust,AU,Retail,REIT
+WPR.AX,Waypoint REIT,AU,NetLease,REIT
+CLW.AX,Charter Hall Long WALE,AU,NetLease,REIT
+DXS.AX,Dexus,AU,Office,REIT
+GPT.AX,GPT Group,AU,Diversified,REIT
+SGP.AX,Stockland,AU,Diversified,REIT
+MGR.AX,Mirvac Group,AU,Diversified,REIT
+ABP.AX,Abacus Group,AU,Diversified,REIT
+ASK.AX,Abacus Storage King,AU,SelfStorage,REIT
+NSR.AX,National Storage REIT,AU,SelfStorage,REIT
+INA.AX,Ingenia Communities,AU,SingleFamily,REIT
+LIC.AX,Lifestyle Communities,AU,SingleFamily,REIT
+ARF.AX,Arena REIT,AU,Diversified,REIT
+COF.AX,Centuria Office REIT,AU,Office,REIT
+RGN.AX,Region Group,AU,Retail,REIT
+CHC.AX,Charter Hall Group,AU,Services,SERVICES
+HMC.AX,HMC Capital,AU,Services,SERVICES
+REA.AX,REA Group,AU,Services,SERVICES
+DHG.AX,Domain Holdings,AU,Services,SERVICES
+8951.T,Nippon Building Fund,JP,Office,REIT
+8952.T,Japan Real Estate Inv,JP,Office,REIT
+8953.T,Japan Metropolitan Fund,JP,Retail,REIT
+8954.T,ORIX JREIT,JP,Diversified,REIT
+3283.T,Nippon Prologis REIT,JP,Logistics,REIT
+3281.T,GLP J-REIT,JP,Logistics,REIT
+3466.T,LaSalle Logiport REIT,JP,Logistics,REIT
+3269.T,Advance Residence Inv,JP,Multifamily,REIT
+8984.T,Daiwa House REIT,JP,Diversified,REIT
+8985.T,Japan Hotel REIT,JP,Hotels,REIT
+3462.T,Nomura Real Estate Master,JP,Diversified,REIT
+8801.T,Mitsui Fudosan,JP,Developer,DEVELOPER
+8802.T,Mitsubishi Estate,JP,Developer,DEVELOPER
+8830.T,Sumitomo Realty & Dev,JP,Developer,DEVELOPER
+3289.T,Tokyu Fudosan,JP,Developer,DEVELOPER
+8804.T,Tokyo Tatemono,JP,Developer,DEVELOPER
+1878.T,Daito Trust Construction,JP,Developer,DEVELOPER
+1925.T,Daiwa House Industry,JP,Developer,DEVELOPER
+1928.T,Sekisui House,JP,Developer,DEVELOPER
+C38U.SI,CapitaLand Integrated Comm,SG,Retail,REIT
+A17U.SI,CapitaLand Ascendas REIT,SG,Logistics,REIT
+M44U.SI,Mapletree Logistics Trust,SG,Logistics,REIT
+ME8U.SI,Mapletree Industrial Trust,SG,Logistics,REIT
+BUOU.SI,Frasers Logistics & Comm,SG,Logistics,REIT
+N2IU.SI,Mapletree Pan Asia Comm,SG,Diversified,REIT
+J69U.SI,Frasers Centrepoint Trust,SG,Retail,REIT
+K71U.SI,Keppel REIT,SG,Office,REIT
+AJBU.SI,Keppel DC REIT,SG,DataCenter,REIT
+C2PU.SI,Parkway Life REIT,SG,Healthcare,REIT
+CRPU.SI,Sasseur REIT,SG,Retail,REIT
+TS0U.SI,OUE REIT,SG,Diversified,REIT
+C09.SI,City Developments,SG,Developer,DEVELOPER
+U14.SI,UOL Group,SG,Developer,DEVELOPER
+H78.SI,Hongkong Land,SG,Developer,DEVELOPER
+0823.HK,Link REIT,HK,Retail,REIT
+0778.HK,Fortune REIT,HK,Retail,REIT
+2778.HK,Champion REIT,HK,Office,REIT
+0405.HK,Yuexiu REIT,HK,Diversified,REIT
+1997.HK,Wharf Real Estate,HK,Diversified,REIT
+0016.HK,Sun Hung Kai Properties,HK,Developer,DEVELOPER
+0012.HK,Henderson Land,HK,Developer,DEVELOPER
+0083.HK,Sino Land,HK,Developer,DEVELOPER
+0101.HK,Hang Lung Properties,HK,Developer,DEVELOPER
+0017.HK,New World Development,HK,Developer,DEVELOPER
+0688.HK,China Overseas Land,HK,Developer,DEVELOPER
+1109.HK,China Resources Land,HK,Developer,DEVELOPER
+0004.HK,Wharf Holdings,HK,Developer,DEVELOPER
+1113.HK,CK Asset Holdings,HK,Developer,DEVELOPER
+MULT3.SA,Multiplan,BR,Malls,REIT
+ALOS3.SA,Allos,BR,Malls,REIT
+IGTI11.SA,Iguatemi,BR,Malls,REIT
+LOGG3.SA,LOG Commercial,BR,Logistics,REIT
+SYNE3.SA,SYN Prop e Tech,BR,Diversified,REIT
+CYRE3.SA,Cyrela Brazil Realty,BR,DeveloperMid,DEVELOPER
+EZTC3.SA,EZTEC,BR,DeveloperMid,DEVELOPER
+EVEN3.SA,Even Construtora,BR,DeveloperMid,DEVELOPER
+TRIS3.SA,Trisul,BR,DeveloperMid,DEVELOPER
+LAVV3.SA,Lavvi Empreendimentos,BR,DeveloperMid,DEVELOPER
+JHSF3.SA,JHSF Participacoes,BR,DeveloperMid,DEVELOPER
+MTRE3.SA,Mitre Realty,BR,DeveloperMid,DEVELOPER
+MELK3.SA,Melnick,BR,DeveloperMid,DEVELOPER
+MDNE3.SA,Moura Dubeux,BR,DeveloperMid,DEVELOPER
+GFSA3.SA,Gafisa,BR,DeveloperMid,DEVELOPER
+MRVE3.SA,MRV Engenharia,BR,DeveloperLow,DEVELOPER
+DIRR3.SA,Direcional,BR,DeveloperLow,DEVELOPER
+PLPL3.SA,Plano & Plano,BR,DeveloperLow,DEVELOPER
+CURY3.SA,Cury Construtora,BR,DeveloperLow,DEVELOPER
+TEND3.SA,Construtora Tenda,BR,DeveloperLow,DEVELOPER
+FUNO11.MX,Fibra Uno,MX,Diversified,REIT
+FIBRAPL14.MX,Fibra Prologis,MX,Logistics,REIT
+TERRA13.MX,Terrafina,MX,Logistics,REIT
+DANHOS13.MX,Fibra Danhos,MX,Malls,REIT
+FMTY14.MX,Fibra Monterrey,MX,Diversified,REIT
+FIHO12.MX,Fibra Hotel,MX,Hotels,REIT
+VESTA.MX,Corporacion Inmobiliaria Vesta,MX,Developer,DEVELOPER
+GRT.JO,Growthpoint Properties,ZA,Diversified,REIT
+RDF.JO,Redefine Properties,ZA,Diversified,REIT
+HYP.JO,Hyprop Investments,ZA,Malls,REIT
+VKE.JO,Vukile Property,ZA,Retail,REIT
+SAC.JO,SA Corporate Real Estate,ZA,Diversified,REIT
+API.L,abrdn Property Income Trust,GB,Diversified,REIT
+MTVW.L,Mountview Estates,GB,Multifamily,REIT
+PNS.L,Panther Securities,GB,Diversified,REIT
+CNN.L,Caledonian Trust,GB,Developer,REIT
+GR1T.L,Grit Real Estate Income,GB,Diversified,REIT
+INL.L,Inland Homes,GB,Developer,REIT
+LSL.L,LSL Property Services,GB,Services,SERVICES
+WINK.L,M Winkworth,GB,Services,SERVICES
+TPFG.L,Property Franchise Group,GB,Services,SERVICES
+EIFF.PA,Societe de la Tour Eiffel,FR,Office,REIT
+ATLD.PA,Fonciere Atland,FR,Diversified,REIT
+VTA.PA,Fonciere Volta,FR,Diversified,REIT
+MRM.PA,MRM,FR,Retail,REIT
+DG.PA,Vinci,FR,Services,SERVICES
+EN.PA,Bouygues,FR,Services,SERVICES
+FGR.PA,Eiffage,FR,Services,SERVICES
+CSAP.DE,Corestate Capital,DE,Services,REIT
+PBY.DE,publity,DE,Office,REIT
+DGR.DE,Deutsche Grundstuecksauktionen,DE,Services,REIT
+FC9.DE,FCR Immobilien,DE,Retail,REIT
+DRE2.DE,Deutsche Real Estate,DE,Diversified,REIT
+HAEG.DE,Hahn-Immobilien-Beteiligungs,DE,Retail,REIT
+TTO.DE,TTL Beteiligung,DE,Diversified,REIT
+GTY2.DE,Gateway Real Estate,DE,Developer,REIT
+DWNI.DE,Deutsche Wohnen,DE,Multifamily,REIT
+TRIAN-B.ST,Fastighets AB Trianon,SE,Multifamily,REIT
+SVEAF.ST,Sveafastigheter,SE,Multifamily,REIT
+AROSB.ST,Aros Bostad,SE,Developer,REIT
+ALM.ST,ALM Equity,SE,Developer,REIT
+FASTAT.ST,Fastator,SE,Diversified,REIT
+SOLNA.ST,Solnaberg Property,SE,Office,REIT
+WBGR-B.ST,Wastbygg Gruppen,SE,Developer,DEVELOPER
+SRNKE-B.ST,Serneke Group,SE,Developer,DEVELOPER
+AFG.OL,AF Gruppen,NO,Developer,DEVELOPER
+VEI.OL,Veidekke,NO,Developer,DEVELOPER
+NPRO.OL,Norwegian Property,NO,Office,REIT
+CONSTI.HE,Consti,FI,Developer,DEVELOPER
+FED.CO,Fast Ejendom Danmark,DK,Diversified,REIT
+FREN.SW,Fundamenta Real Estate,CH,Multifamily,REIT
+UBS.VI,UBM Development,AT,Developer,DEVELOPER
+IMMOU.BR,Immo Moury,BE,Diversified,REIT
+SCYR.MC,Sacyr,ES,Developer,DEVELOPER
+ACS.MC,ACS Actividades,ES,Developer,DEVELOPER
+FCC.MC,FCC,ES,Developer,DEVELOPER
+RN.MI,Risanamento,IT,Developer,REIT
+RST.MI,Restart,IT,Diversified,REIT
+NR.MI,Nova Re,IT,Diversified,REIT
+WBD.MI,WeBuild,IT,Developer,DEVELOPER
+MUR.WA,Murapol,PL,Developer,DEVELOPER
+NVA.WA,PA Nova,PL,Developer,DEVELOPER
+RNK.WA,Rank Progress,PL,Developer,DEVELOPER
+NOVAL.AT,Noval Property,GR,Diversified,REIT
+ORILINA.AT,Orilina Properties,GR,Diversified,REIT
+DIMAND.AT,Dimand,GR,Developer,REIT
+SON.LS,Sonae,PT,Services,SERVICES
+AIP-UN.TO,Aip Realty Trust,CA,Diversified,REIT
+ALFA-UN.TO,Margaux Real Estate Investme,CA,Diversified,REIT
+APR-UN.TO,Automotive Properties Real E,CA,NetLease,REIT
+BTB-UN.TO,Btb Real Estate Investment T,CA,Diversified,REIT
+ERE-UN.TO,European Residential Real Es,CA,Multifamily,REIT
+FCA-UN.TO,Firm Capital Apartment Real,CA,Multifamily,REIT
+FCD-UN.TO,Firm Capital Property Trust,CA,Diversified,REIT
+GO-UN.TO,Go Residential Real Est,CA,Multifamily,REIT
+HOM-UN.TO,Bsr Real Estate Investment T,CA,Multifamily,REIT
+HOT-UN.TO,American Hotel Income Proper,CA,Hotels,REIT
+INO-UN.TO,Inovalis Real Estate Investm,CA,Diversified,REIT
+MAR-UN.TO,Marwest Apartment Real Estat,CA,Multifamily,REIT
+MHC-UN.TO,Flagship Communities Reit Ut,CA,SingleFamily,REIT
+MI-UN.TO,Minto Apartment Real Estate,CA,Multifamily,REIT
+MRG-UN.TO,Morguard North American Resi,CA,Diversified,REIT
+MRT-UN.TO,Morguard Real Estate-Tr Uts,CA,Diversified,REIT
+NET-UN.TO,Canadian Net Real Estate Inv,CA,Diversified,REIT
+NRR-UN.TO,Northview Residential Reit,CA,Multifamily,REIT
+NXR-UN.TO,Nexus Industrial Reit,CA,Logistics,REIT
+PINE-UN.TO,Pine Trail Real Estate Inves,CA,Diversified,REIT
+PLZ-UN.TO,Plaza Retail Reit,CA,Retail,REIT
+PRV-UN.TO,Pro Real Estate Investment T,CA,Diversified,REIT
+RPR-UN.TO,Ravelin Properties Reit,CA,Diversified,REIT
+RRR-UN.TO,R&R Real Estate Investment T,CA,Diversified,REIT
+TNT-UN.TO,True North Commercial Real E,CA,Diversified,REIT
+DHVN.SW,Dolder Hotel Ag,CH,HotelOp,SERVICES
+SHSTZ.SW,Suvretta Haus St Moritz,CH,HotelOp,SERVICES
+SSTN.SW,Sunstar-Holding Sa-Reg,CH,HotelOp,SERVICES
+ULTIMA.SW,Ultima Capital Sa,CH,HotelOp,SERVICES
+IFA.DE,Ls Invest Ag,DE,HotelOp,SERVICES
+MEL.MC,Melia Hotels International,ES,HotelOp,SERVICES
+YATO.MC,Yato Sm,ES,HotelOp,SERVICES
+AC.PA,Accor Sa,FR,HotelOp,SERVICES
+ALLHB.PA,Les Hotels Baverez,FR,HotelOp,SERVICES
+MLHBP.PA,Hoteles Bestprice Sa,FR,HotelOp,SERVICES
+MLHMC.PA,Hotel Majestic Societe Immo,FR,HotelOp,SERVICES
+VAC.PA,Pierre & Vacances,FR,HotelOp,SERVICES
+IHG.L,Intercontinental Hotels Grou,GB,HotelOp,SERVICES
+PPH.L,Pphe Hotel Group Ltd,GB,HotelOp,SERVICES
+SHOT.ST,Scandic Hotels Group Ab,SE,HotelOp,SERVICES
+MRP,Millrose Properties,US,Developer,DEVELOPER
+CMTG,Claros Mortgage Trust Inc,US,Mortgage,MORTGAGE
+AAT,American Assets Trust Inc,US,Diversified,REIT
+AHH,Armada Hoffler Properties In,US,Diversified,REIT
+AHT,Ashford Hospitality Trust,US,Hotels,REIT
+AIV,Apartment Invt & Mgmt Co -A,US,Multifamily,REIT
+ALX,Alexander'S Inc,US,Diversified,REIT
+ASPD,Aspen Digital Inc,US,DataCenter,REIT
+BCND,Beacon Redevelopment Industr,US,Diversified,REIT
+BFS,Saul Centers Inc,US,Retail,REIT
+BHM,Bluerock Homes Trust Inc,US,SingleFamily,REIT
+BHR,Braemar Hotels & Resorts Inc,US,Hotels,REIT
+BNL,Broadstone Net Lease Inc,US,NetLease,REIT
+BRER,Bresler & Reiner Inc,US,Diversified,REIT
+CHCT,Community Healthcare Trust I,US,Healthcare,REIT
+CHTH,Cnl Healthcare Properties In,US,Healthcare,REIT
+CIO,City Office Reit Inc,US,Office,REIT
+CLDT,Chatham Lodging Trust,US,Hotels,REIT
+CLPR,Clipper Realty Inc,US,Multifamily,REIT
+CMCT,Creative Media & Community T,US,Diversified,REIT
+CMRF,Cim Real Estate Finance Trus,US,Diversified,REIT
+CSR,Centerspace,US,Multifamily,REIT
+CTO,Cto Realty Growth Inc,US,Diversified,REIT
+CURB,Curbline Properties Corp,US,Retail,REIT
+DEA,Easterly Government Properti,US,Office,REIT
+DHC,Diversified Healthcare Trust,US,Healthcare,REIT
+EPR,Epr Properties,US,Diversified,REIT
+ESBA,Empire State Realty Op Lp-Es,US,Diversified,REIT
+FREVS,First Real Estate Inv Tr Nj,US,Diversified,REIT
+FSP,Franklin Street Properties C,US,Diversified,REIT
+FVR,Frontview Reit Inc,US,NetLease,REIT
+GBCS,Selectis Health Inc,US,Healthcare,REIT
+GEDC,Calethos Inc,US,Diversified,REIT
+GNL,Global Net Lease Inc,US,NetLease,REIT
+HGPI,Horizon Group Properties Inc,US,Diversified,REIT
+HHDS,Highlands Reit Inc,US,Diversified,REIT
+HLTC,National Healthcare Properti,US,Healthcare,REIT
+HR,Healthcare Realty Trust Inc,US,Healthcare,REIT
+ILPT,Industrial Logistics Propert,US,Logistics,REIT
+INN,Summit Hotel Properties Inc,US,Hotels,REIT
+INRE,Inland Real Estate Income Tr,US,Diversified,REIT
+IOR,Income Opp Realty Investors,US,Diversified,REIT
+KBSR,Kbs Real Estate Investment T,US,Diversified,REIT
+LHTV,Lightstone Value Plus Reit I,US,Diversified,REIT
+LINE,Lineage Inc,US,Logistics,REIT
+LVPR,Lightstone Value Plus Real E,US,Diversified,REIT
+LVVP,Lightstone Value Plus Reit V,US,Diversified,REIT
+LVVR,Lightstone Value Plus Real E,US,Diversified,REIT
+MDRR,Medalist Diversified Reit In,US,Diversified,REIT
+MDV,Modiv Industrial Inc,US,Logistics,REIT
+MKZR,Mackenzie Realty Capital Inc,US,Diversified,REIT
+MPW,Medical Properties Trust Inc,US,Healthcare,REIT
+MRTI,Maxus Realty Trust Inc,US,Diversified,REIT
+NHHS,Northstar Healthcare Income,US,Healthcare,REIT
+NLOP,Net Lease Office Property,US,NetLease,REIT
+NTST,Netstreit Corp,US,NetLease,REIT
+NXDT,Nexpoint Diversified Real Es,US,Diversified,REIT
+NYC,American Strategic Investm-A,US,Diversified,REIT
+ONL,Orion Properties Inc,US,Diversified,REIT
+OPITQ,Office Properties Income Tru,US,Office,REIT
+PCOK,Pacific Oak Strategic Opport,US,Diversified,REIT
+PDNLB,Presidential Rlty New -Cl B,US,Multifamily,REIT
+PINE,Alpine Income Property Trust,US,NetLease,REIT
+PKST,Peakstone Realty Trust,US,Diversified,REIT
+PLYM,Plymouth Industrial Reit Inc,US,Logistics,REIT
+PRLEQ,Pillarstone Capital Reit,US,Diversified,REIT
+PSTL,Postal Realty Trust Inc- A,US,NetLease,REIT
+PTTTS,Palmetto Real Estate Trust,US,Diversified,REIT
+PVOZ,Park View Oz Reit Inc,US,Diversified,REIT
+PW,Power Reit,US,Diversified,REIT
+SELF,Global Self Storage Inc,US,Diversified,REIT
+SFRT,Appreciate Holdings Inc,US,Diversified,REIT
+SGIC,Strategic Realty Trust Inc,US,Diversified,REIT
+SHCO,Soho House & Co Inc,US,Diversified,REIT
+SILA,Sila Realty Trust Inc,US,Diversified,REIT
+SITC,Site Centers Corp,US,Retail,REIT
+SLVS,Silver Star Properties Reit,US,Diversified,REIT
+SMA,Smartstop Self Storage Reit,US,Diversified,REIT
+SOHO,Sotherly Hotels Inc,US,Hotels,REIT
+SQFT,Presidio Property Trust - A,US,Diversified,REIT
+STRW,Strawberry Fields Reit Inc,US,Diversified,REIT
+STSR,Strategic Student & Senior H,US,Senior,REIT
+UMH,Umh Properties Inc,US,Diversified,REIT
+WHLR,Wheeler Real Estate Investme,US,Diversified,REIT
+CHH,Choice Hotels Intl Inc,US,HotelOp,SERVICES
+H,Hyatt Hotels Corp - Cl A,US,HotelOp,SERVICES
+MAR,Marriott International -Cl A,US,HotelOp,SERVICES
+PRXK,Procaccianti Hotel Reit Cl K,US,HotelOp,SERVICES
+WH,Wyndham Hotels & Resorts Inc,US,HotelOp,SERVICES
+AYC.MC,Ayco Grupo Inmobiliario Sa,ES,,REIT
+CEV.MC,Cevasa-Cia Espanol De Viv-,ES,,REIT
+GGC.MC,General De Galerias Comercia,ES,,REIT
+IMC.MC,Inmocemento Sa,ES,,REIT
+LIB.MC,Libertas 7,ES,,REIT
+MTB.MC,Montebalito Sa,ES,,REIT
+NYE.MC,Nyesa Valores Corporacion Sa,ES,,REIT
+SCCPS.MC,Costa Cupula Socimi Sa,ES,Diversified,REIT
+SCDOM.MC,Jhg Domus Socimi Sa,ES,Diversified,REIT
+SCGAV.MC,Gavari Properties Socimi Sa,ES,Diversified,REIT
+SCGRM.MC,Greymile Socimi Sa,ES,Diversified,REIT
+SCHLR.MC,Helios Re Socimi Sa,ES,Diversified,REIT
+SCHST.MC,Nordeste Properties Socimi S,ES,Diversified,REIT
+SCIG1.MC,Inbest Gpf Multi Asset Class,ES,,REIT
+SCIMS.MC,Inmobiliaria Marbella Socimi,ES,Diversified,REIT
+SCIPP.MC,Inhome Prime Properties Soci,ES,,REIT
+SCMIB.MC,Mistral Iberia Real Estate S,ES,,REIT
+SCORE.MC,Olimpo Retail Germany Sa,ES,Retail,REIT
+SCORS.MC,Optimum Re Spain Socimi Sa,ES,Diversified,REIT
+SCTXS.MC,Tarjar Xairo Socimi Sa,ES,Diversified,REIT
+SCUVS.MC,Urban View Development Spain,ES,Developer,REIT
+STNA.MC,Santa Ana Global Enterprises,ES,,REIT
+TRA.MC,Trajano Iberia Sa,ES,,REIT
+YABA.MC,Jaba I Inversiones Inmobilia,ES,,REIT
+YADR.MC,Adriano Care Socimi Sa,ES,Senior,REIT
+YADV.MC,Advero Properties Socimi Sa,ES,Diversified,REIT
+YAI1.MC,All Iron Re I Socimi,ES,Diversified,REIT
+YARP.MC,Arrienda Rental Properties S,ES,,REIT
+YAZR.MC,Azaria Rental Socimi Sa,ES,Diversified,REIT
+YBAR.MC,Barcino Property Socimi Sa,ES,Diversified,REIT
+YCPS.MC,Castellana Properties Socimi,ES,Diversified,REIT
+YDOA.MC,Inversiones Doalca Socimi Sa,ES,Diversified,REIT
+YEIS.MC,Elaia Investment Spain Socim,ES,,REIT
+YENT.MC,Entrecampos Cuatro Socimi Sa,ES,Diversified,REIT
+YEPSA.MC,Emperador Properties Socimi,ES,Diversified,REIT
+YEUR.MC,Euro Cervantes Socimi,ES,Diversified,REIT
+YFID.MC,Fidere Patrimonio,ES,,REIT
+YGMP.MC,Gmp Property Socimi Sa,ES,Diversified,REIT
+YGO2.MC,Greenoak Spain Holdings Soci,ES,,REIT
+YGOP.MC,Gop Properties Socimi Sa,ES,Diversified,REIT
+YHSP.MC,Hispanotels Inversiones Soci,ES,,REIT
+YHTI.MC,Hotei Properties Group Socim,ES,,REIT
+YINB1.MC,Inbest Prime I Inmuebles Soc,ES,,REIT
+YINB2.MC,Inbest Prime Ii Inmuebles So,ES,,REIT
+YINB3.MC,Inbest Prime Iii Inmuebles S,ES,,REIT
+YINB4.MC,Inbest Prime Iv Inmuebles So,ES,,REIT
+YINB6.MC,Inbest Prime Vi Inmuebles So,ES,,REIT
+YINB8.MC,Inbest Prime Viii Inmuebles,ES,,REIT
+YIPS.MC,Inversa Prime Socimi Sa,ES,Diversified,REIT
+YIRG.MC,Irg10 Socimi Sa,ES,Diversified,REIT
+YISC.MC,Isc Fresh Water Investment S,ES,,REIT
+YJSS.MC,Jss Real Estate Socimi Sa,ES,Diversified,REIT
+YKTS.MC,Ktesios Real Estate Socimi,ES,Diversified,REIT
+YLFG.MC,Lafinca Global Assets Socimi,ES,Diversified,REIT
+YMAT.MC,Matritense Real Estate Sa,ES,,REIT
+YMCS.MC,Miciso Real Estate Socimi Sa,ES,Diversified,REIT
+YMRE.MC,Meridia Real E Iii Socimi Sa,ES,Diversified,REIT
+YNPC.MC,Nextpoint Capital Socimi,ES,Diversified,REIT
+YNUM.MC,Numulae Gtion De Serv Soc Sa,ES,,REIT
+YORE.MC,Olimpo Real Estate Socimi Sa,ES,Diversified,REIT
+YPARK.MC,Inmobiliaria Park Rose Ibero,ES,Diversified,REIT
+YQUO.MC,Quonia Socimi Sa,ES,Diversified,REIT
+YSIL.MC,Silicius Real Estate Socimi,ES,Diversified,REIT
+YSRR.MC,Serrano 61 Desarrollo Socimi,ES,Diversified,REIT
+YTAN.MC,Tander Inversiones Socimi Sa,ES,Diversified,REIT
+YTCH.MC,Techo Hogar Socimi Sa,ES,Diversified,REIT
+YTEM.MC,Tempore  Properties Socimi S,ES,Diversified,REIT
+YTRI.MC,Trivium Real Estate Socimi S,ES,Diversified,REIT
+YTRM.MC,Torimbia Socimi Sa,ES,Diversified,REIT
+YTST.MC,Testa Residencial Socimi Sa,ES,Multifamily,REIT
+YVCP.MC,Veracruz Properties Socimi,ES,Diversified,REIT
+YVIT.MC,Vitruvio Real Estate Socimi,ES,Diversified,REIT
+YVIV.MC,Vivenio Residencial Socimi S,ES,Multifamily,REIT
+YZBL.MC,Zambal Spain Socimi Sa,ES,Diversified,REIT
+ACAN.PA,Acanthe Developpement Sa,FR,Developer,REIT
+ALADO.PA,Adomos,FR,,REIT
+ALDV.PA,Ad Capital Siic,FR,,REIT
+ALEUA.PA,Eurasia Groupe,FR,,REIT
+ALIMO.PA,Groupimo,FR,,REIT
+ALREA.PA,Realites,FR,,REIT
+ALREB.PA,Rebirth Spa,FR,,REIT
+ALSAS.PA,Stradim-Espace Finances Sa,FR,,REIT
+ALUNT.PA,Uniti Sa,FR,,REIT
+AREIT.PA,Altareit,FR,,REIT
+ARTE.PA,Artea - Regr,FR,,REIT
+BLEE.PA,Bleecker,FR,,REIT
+CBOT.PA,Cbo Territoria,FR,,REIT
+CBSM.PA,Scbsm,FR,,REIT
+CFI.PA,Cfi Compagnie Fonciere Inter,FR,,REIT
+COUR.PA,Courtois-R,FR,,REIT
+CROS.PA,Crosswood,FR,,REIT
+EFI.PA,Eurasia Fonciere Investissem,FR,,REIT
+ELIX.PA,Elix Rental Housing Socimi I,FR,Diversified,REIT
+MLABC.PA,Igis Neptune Barcelona Holdc,FR,,REIT
+MLAEM.PA,Ashler Et Manson,FR,,REIT
+MLAGP.PA,Agp Malaga Socimi,FR,Diversified,REIT
+MLARE.PA,Aref Thalassa Socimi Sa,FR,Diversified,REIT
+MLARI.PA,Arimelia Itg Socimi Sa,FR,Diversified,REIT
+MLARO.PA,Aroca Del Pinar Socimi Sa,FR,Diversified,REIT
+MLASO.PA,Apodaca Inversiones Inmobila,FR,,REIT
+MLAST.PA,Astickso Xxi Socimi Sa,FR,Diversified,REIT
+MLAZR.PA,Azur Selection Sa/The,FR,,REIT
+MLBAR.PA,Barings Core Spain Socimi,FR,Diversified,REIT
+MLCAN.PA,Eurolog Canola Socimi Sau,FR,Diversified,REIT
+MLCOE.PA,Core Spain Holdco Socimi Sa,FR,Diversified,REIT
+MLECE.PA,Faifey Invest Socimi Sa,FR,Diversified,REIT
+MLGNS.PA,Genesis Reit Socimi Sa,FR,Diversified,REIT
+MLINM.PA,Inmark Prime Socimi Sau,FR,Diversified,REIT
+MLINT.PA,Iante Investments Socimi Sa,FR,Diversified,REIT
+MLIPO.PA,Iposa Properties Socimi Sa,FR,Diversified,REIT
+MLIPP.PA,Immob Paris Pierres Precieus,FR,,REIT
+MLISP.PA,Inmosupa Socimi Sa,FR,Diversified,REIT
+MLMAQ.PA,Maq Administracion Urbanas S,FR,,REIT
+MLMIV.PA,Meridia Re Iv Socimi Sau,FR,Diversified,REIT
+MLMTP.PA,Montepino Logistica Sl,FR,Logistics,REIT
+MLPER.PA,Perseida Renta Gestion Socim,FR,,REIT
+MLPRI.PA,Nationale De Propriete,FR,,REIT
+MLSAG.PA,Sagax Real Estate Socimi Sa,FR,Diversified,REIT
+MLSJA.PA,Saja Real Estate Socimi Sa,FR,Diversified,REIT
+MLURC.PA,Urbanizadora Constructora Le,FR,Developer,REIT
+MLVIN.PA,Fonciere Vindi Sa,FR,,REIT
+ORIA.PA,Fiducial Real Estate Sa,FR,,REIT
+PAT.PA,Patrimoine Et Commerce-Regr,FR,Retail,REIT
+SPEL.PA,Fonciere Volta,FR,,REIT
+TAYN.PA,Tayninh,FR,,REIT
+URW.PA,Unibail-Rodamco-Westfield,FR,,REIT
+VTR.PA,Vitura,FR,,REIT
+2GI.DE,Gieag Immobilien Ag,DE,Diversified,REIT
+88D.DE,Wr Wohnraum Ag,DE,Multifamily,REIT
+A4Y0.DE,Accentro Real Estate Ag,DE,,REIT
+A62.DE,Igp Advantag Ag,DE,,REIT
+ABHA.DE,Hasen-Immobilien Ag,DE,Diversified,REIT
+ABK.DE,Aktienbrauerei Kaufbeuren Ag,DE,,REIT
+AGR.DE,Agrob Immobilien Ag,DE,Diversified,REIT
+AMM.DE,Grounds Real Estate Dev/The,DE,,REIT
+BBR.DE,Buerger Brauh Ravensb-Lindau,DE,,REIT
+BENH.DE,Beno Holding Ag,DE,,REIT
+CCAP.DE,Corestate Capital Holding S.,DE,,REIT
+CGX.DE,Cgre Ag,DE,,REIT
+COR.DE,Coreo Ag,DE,,REIT
+CVK.DE,Diok One Ag,DE,,REIT
+DWB.DE,Dinkelacker Ag,DE,,REIT
+FVI.DE,Fair Value Reit-Ag,DE,,REIT
+GAG0.DE,Gore German Office Real Est,DE,Office,REIT
+GIB.DE,Gsw Immobilien Ag,DE,Diversified,REIT
+GTY.DE,Gateway Real Estate Ag,DE,,REIT
+GWK3.DE,Gag Immobilien Ag-Prf,DE,Diversified,REIT
+HHHA.DE,Homes & Holiday Ag,DE,,REIT
+IC8.DE,Incity Immobilien Ag,DE,Diversified,REIT
+ILK1.DE,Ifunded Ag,DE,,REIT
+KA1.DE,Hausvorteil Ag,DE,,REIT
+KBU.DE,Tag Colonia-Immobilien Ag,DE,Diversified,REIT
+O5G.DE,Cpi Property Group Sa,DE,,REIT
+OAB0.DE,Oab Osnabruecker Anlagen,DE,,REIT
+RKB.DE,Webac Holding Ag,DE,,REIT
+RUC0.DE,Rim Ag,DE,,REIT
+SPB.DE,Sedlmayr Grund Und Immo,DE,,REIT
+STG.DE,Stinag Stuttgart Invest Ag,DE,,REIT
+SZ50.DE,Luebke Kelber Ag,DE,,REIT
+TLG.DE,Tlg Immobilien Ag,DE,Diversified,REIT
+TR61.DE,Tmm Real Estate Developm-Gdr,DE,Developer,REIT
+TRU.DE,Traumhaus Ag,DE,,REIT
+VIH1.DE,Vib Vermoegen Ag,DE,,REIT
+VROS.DE,Verianos Se,DE,,REIT
+WCMK.DE,Wcm Beteiligungs & Grund Ag,DE,,REIT
+ACRI-A.ST,Acrinova Ab-A,SE,,REIT
+AGROUP.ST,Arlandastad Group Ab,SE,,REIT
+AMH2-B.ST,Amhult 2 Ab-B,SE,,REIT
+BOHO.ST,Boho Group Ab,SE,,REIT
+BONAS.ST,Bonasudden Holding Ab,SE,,REIT
+BRIN-B.ST,Brinova Fastigheter Ab,SE,Diversified,REIT
+CORE-A.ST,Corem Property Group Ab-A,SE,,REIT
+EAST.ST,Eastnine Ab,SE,,REIT
+FLMNG.ST,Fleming Properties Ab,SE,,REIT
+FNOVA-B.ST,Fortinova Fastigheter Ab,SE,Diversified,REIT
+GPG.ST,Genova Property Group Ab,SE,,REIT
+INTEA-B.ST,Intea Fastigheter Ab,SE,Diversified,REIT
+JOM-A.ST,John Mattson Fastighetsforet,SE,Diversified,REIT
+KAPIA-B.ST,Kalleback Property Invest Ab,SE,,REIT
+KFAST-B.ST,K-Fast Holding Ab,SE,,REIT
+KLARA-B.ST,Klarabo Sverige Ab-B,SE,,REIT
+KRON-A.ST,Krona Public Real Estate Ab,SE,,REIT
+LINKA-B.ST,Link Prop Investment Ab,SE,,REIT
+LOGI-A.ST,Logistea Ab-A,SE,,REIT
+MOFAST.ST,Mofast Ab,SE,,REIT
+NORDEN.ST,Norden Estates Ab,SE,,REIT
+PHOLPREF.ST,Preservia Holding Ab-Pref,SE,,REIT
+PHYR-B.ST,Preservia Hyresfastigheter-B,SE,Diversified,REIT
+PRESRV.ST,Preservium Property Ab,SE,,REIT
+PRISM-A.ST,Prisma Properties Ab,SE,,REIT
+REAL.ST,Real Fastigheter Ab,SE,Diversified,REIT
+SAGA-A.ST,Sagax Ab-A,SE,,REIT
+SAMT-B.ST,Samtrygg Group Ab,SE,,REIT
+SBFBO-A.ST,Sbf Bostad Ab-A,SE,Multifamily,REIT
+SFAST.ST,Stenhus Fastigheter I Norden,SE,Diversified,REIT
+SLOTT-B.ST,Slottsviken Fastighetsaktieb,SE,Diversified,REIT
+SLP-B.ST,Swedish Logistic Property-B,SE,Logistics,REIT
+SOLN-A.ST,Solnaberg Property Ab,SE,,REIT
+STUDBO.ST,Studentbostader I Norden Ab,SE,Multifamily,REIT
+TINGS-A.ST,Tingsvalvet Fastighets Ab,SE,Diversified,REIT
+TITA-B.ST,Titania Holding Ab,SE,,REIT
+ADMI.SW,Admicasa Holding Ag,CH,,REIT
+AFEBWI.SW,Ag Fuer Erstellung Billiger,CH,,REIT
+AGRN.SW,Agruna Ag-Reg Shs,CH,,REIT
+CASRAD.SW,Casainvest Rheintal Ag,CH,,REIT
+CHAM.SW,Cham Swiss Properties Ag,CH,,REIT
+EPH.SW,Eph European Property Holdin,CH,,REIT
+EPIC.SW,Epic Suisse Ag,CH,,REIT
+EREHAB.SW,Espace Real Estate Ag,CH,,REIT
+FTBH.SW,F.T.B. Holding,CH,,REIT
+IMMPSB.SW,Immobiliare Pharmapark,CH,Diversified,REIT
+IMMVT.SW,Immges Viamala,CH,,REIT
+ISN.SW,Intershop Holding Ag,CH,,REIT
+KONKZ.SW,Konkordia Ag N,CH,,REIT
+MAXIMA.SW,Promaxima Ag,CH,,REIT
+PCW.SW,Pfenninger & Cie Waedenswil,CH,,REIT
+PLAN.SW,Plazza Ag-Reg A,CH,,REIT
+PRO.SW,Procimmo Group Ag,CH,,REIT
+SEAN.SW,Se Swiss Estates Ag-Reg,CH,,REIT
+SITEX.SW,Sitex Properties Holding Ag,CH,,REIT
+SRIAR.SW,Schuetzen Rheinfelden Immobi,CH,,REIT
+TLIMMO.SW,Tl Immobilien Ag,CH,Diversified,REIT
+TRLIM.SW,Thurella Immobilien Ag,CH,Diversified,REIT
+TUIMZ.SW,Tuwag Immobilien Ag,CH,Diversified,REIT
+VARN.SW,Varia Us Properties Ag,CH,,REIT
+ZUBN.SW,Zueblin Immobilien Holdi-Reg,CH,Diversified,REIT
+ACCB.BR,Accentis Nv,BE,,REIT
+ACVVP.BR,Acvlho,BE,,REIT
+ASCE.BR,Ascencio,BE,,REIT
+BANI.BR,Banimmo Sa/Nv - A,BE,,REIT
+BELR.BR,Belgian Resources & Capital,BE,,REIT
+CHZVP.BR,Compagnie Het Zoute - Auc,BE,,REIT
+DIEG.BR,Diegem Kennedycert,BE,,REIT
+DISL.BR,Distri-Land Sa,BE,,REIT
+EMUVP.BR,L Emulation Sa,BE,,REIT
+IFRVP.BR,Immo Fond'Roy - Auc,BE,,REIT
+IIAVP.BR,Imm Et Ind D'Ans Siminan-Auc,BE,,REIT
+INCLU.BR,Inclusio Sa,BE,,REIT
+MBZVP.BR,Mbz Gen-Jce,BE,,REIT
+MLNEU.BR,Cie Financiere De Neufcour,BE,,REIT
+QRF.BR,Qrf Comm Va,BE,,REIT
+SOFT.BR,Softimat,BE,,REIT
+TEXF.BR,Texaf,BE,,REIT
+VASTB.BR,Vastned Nv,BE,,REIT
+WEYVP.BR,Weyveld Nossegem,BE,,REIT
+ZEN.BR,Zenobe Gramme,BE,,REIT
+ALNA.L,Alina Holdings Plc,GB,,REIT
+ALSP.L,Ace Liberty & Stone Plc,GB,,REIT
+ASPL.L,Aseana Properties Ltd,GB,,REIT
+CDFF.L,Cardiff Property Plc,GB,,REIT
+CIC.L,Conygar Investment Co Plc,GB,,REIT
+CPAI.L,Capai Plc,GB,,REIT
+DCI.L,Dci Advisors Ltd,GB,,REIT
+FPO.L,First Property Group Plc,GB,,REIT
+GWI.L,Globalworth Real Estate Inve,GB,,REIT
+HKLD.L,Hongkong Land Holdings Ltd,GB,,REIT
+HOME.L,Home Reit Plc,GB,,REIT
+IWG.L,International Workplace Grou,GB,,REIT
+KCR.L,Kcr Residential Reit Plc,GB,Multifamily,REIT
+MOY.L,Mollyroe Plc,GB,,REIT
+PLAZ.L,Plaza Centers Nv-Cdi,GB,,REIT
+ROAD.L,Roadside Real Estate Plc,GB,,REIT
+SPDI.L,Secure Property Development,GB,Developer,REIT
+WRN.L,Worthington Group Plc,GB,,REIT
+WSP.L,Wynnstay Properties Plc,GB,,REIT
+AGAT.CO,Agat Ejendomme A/S,DK,,REIT
+BEWAIN.CO,Bewa Invest A/S,DK,,REIT
+CEMAT.CO,Cemat A/S,DK,,REIT
+EGNETY.CO,Egnsinvest Ejd. Tyskland A/S,DK,,REIT
+GERHSP.CO,German High Street Propertie,DK,,REIT
+KJE.CO,Kj Ejendomsinvest A/S,DK,,REIT
+LTE.CO,Landtrust Europe A/S,DK,,REIT
+MOVINN.CO,Movinn A/S,DK,,REIT
+PARKST-A.CO,Park Street A/S - A,DK,,REIT
+PRIMOF.CO,Prime Office A/S,DK,Office,REIT
+REFSH.CO,Refshaleoens Ejendomsselskab,DK,,REIT
+SWISS.CO,Swiss Properties Invest A/S,DK,,REIT
+AEDES.MI,Aedes Spa,IT,,REIT
+BRI.MI,Brioschi Sviluppo Immobiliar,IT,Diversified,REIT
+DOT.MI,Dotstay Spa,IT,,REIT
+EAV.MI,Emma Villas Spa,IT,,REIT
+ENA.MI,Ena Spa,IT,,REIT
+HZY.MI,Homizy Siiq Spa,IT,,REIT
+MEV.MI,Mevim Spa,IT,,REIT
+SOGES.MI,Soges Group Spa,IT,,REIT
+TCM.MI,Tecma Solutions Spa,IT,,REIT
+BALT.OL,Baltic Sea Properties As,NO,,REIT
+BOR.OL,Borgestad Asa,NO,,REIT
+BSP.OL,Black Sea Property,NO,,REIT
+EISP.OL,Eiendomsspar As,NO,Diversified,REIT
+ENTR-A.OL,Entra Asa,NO,,REIT
+KMCP.OL,Kmc Properties Asa,NO,,REIT
+PPG.OL,Pioneer Property Group Asa,NO,,REIT
+PUBLI.OL,Public Property Invest As,NO,,REIT
+VIEI.OL,Victoria Eiendom As,NO,Diversified,REIT
+ASTAK.AT,Alpha Real Estate Services S,GR,,REIT
+BLEKEDRO.AT,Ble Kedros Reic,GR,,REIT
+KEKR.AT,Kekrops S.A.,GR,,REIT
+ONYX.AT,Onyx Touristiki Sa,GR,,REIT
+PRODEA.AT,Prodea Real Estate Investmen,GR,,REIT
+TREK.AT,Trek Development Ae,GR,Developer,REIT
+TRESTATE.AT,Trade Estates Real Estate In,GR,,REIT
+MLM24.LS,Multi 24-Sociedade Imobiliar,PT,,REIT
+MLMAC.LS,Promontoria Macc 1X1 Socimi,PT,Diversified,REIT
+MLMR.LS,Monumental Res,PT,,REIT
+MLORE.LS,Olimpo Real Estate Portugal,PT,,REIT
+MLRSR.LS,Rsr Singular Assets Europe S,PT,,REIT
+MLVDN.LS,Vila Dos Numeros-Sigi Sa,PT,,REIT
+SNG.LS,Sonagi Sa,PT,,REIT
+AAG.VI,Aventa Ag/At,AT,,REIT
+ATHOS.VI,Athos Immobilien Ag,AT,Diversified,REIT
+CPI.VI,Cpi Europe Ag,AT,,REIT
+HED.VI,Maschinenfabrik Heid Ag,AT,,REIT
+BLUE.LU,Blue Coast Properties Plc,LU,,REIT
+FOTEX.LU,Fotex Holding Se Co Ltd By,LU,,REIT
+PICX.LU,Pineapple Corp Plc,LU,,REIT
+STCXH.LU,St Croix Holding Immobilier,LU,Diversified,REIT
+EIK.IC,Eik Fasteignafelag Hf,IS,,REIT
+HEIMAR.IC,Heimar Hf,IS,,REIT
+KALD.IC,Kaldalon Hf,IS,,REIT
+REITIR.IC,Reitir Fasteignafelag Hf,IS,,REIT
+ASUNTO.HE,Asuntosalkku Oyj,FI,,REIT
+TOIVO.HE,Toivo Group Oyj,FI,,REIT
+CTPNV.AS,Ctp Nv,NL,,REIT
