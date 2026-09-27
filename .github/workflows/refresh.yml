@@ -1,2 +1,92 @@
 name: Refresh snapshot
-uses: actions/deploy-pages@v4
+
+# Free auto-update: GitHub Actions runs both builders on a schedule, rebuilds
+# the two viewer files, and commits everything. GitHub Pages serves the result.
+# Cost: $0. Public repos get unlimited Actions minutes on standard runners.
+on:
+  schedule:
+    # 06:20 UTC — after the US close, before the European open.
+    - cron: "20 6 * * 1-5"
+    # 21:40 UTC — after the European close.
+    - cron: "40 21 * * 1-5"
+  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90       # ~900 names across two builders needs real headroom
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install yfinance pandas numpy
+
+      # Persist the fundamentals and balance-sheet cache between runs, so most
+      # days only re-fetch prices rather than all ~900 tickers' full profile.
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: rescreen-cache-${{ github.run_id }}
+          restore-keys: rescreen-cache-
+
+      - name: Build the screen (prices, dividends, financials)
+        run: python build_snapshot.py
+
+      - name: Sanity check before publishing
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open("data/snapshot.json"))
+          n = d["n"]
+          print(f"rows={n} asof={d['asof']}")
+          if n < 350:
+              sys.exit(f"refusing to publish: only {n} rows survived — feed is probably broken")
+          payers = sum(1 for r in d["rows"] if r["ry"] > 0)
+          if payers < n * 0.4:
+              sys.exit(f"refusing to publish: only {payers}/{n} names have a dividend")
+          PY
+
+      - name: Build company detail (10y charts, statements)
+        run: python build_detail.py
+
+      - name: Build the two files people actually open
+        run: |
+          python make_standalone.py --light
+          python make_standalone.py
+
+      - name: Commit
+        run: |
+          git config user.name  "rescreen-bot"
+          git config user.email "actions@github.com"
+          git add data/ rescreen-light.html rescreen-standalone.html
+          git diff --staged --quiet || git commit -m "auto-update $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - uses: actions/deploy-pages@v4
