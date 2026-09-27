@@ -1,0 +1,2 @@
+name: Refresh snapshot
+uses: actions/deploy-pages@v4
