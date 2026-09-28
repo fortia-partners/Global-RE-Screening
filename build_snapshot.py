@@ -42,6 +42,16 @@ MIN_ADV_USD = 100_000      # drop anything thinner than this (user's floor)
 INCLUDE_REGIONS = {"Europe", "North America", "Latin America"}
 EXCLUDE_COUNTRIES = {"MX", "ZA"}        # inside an included region but not wanted
 SPECIAL_MULT = 1.75        # payment > this × baseline ⇒ treat excess as special
+# A REIT explicitly winding down (selling its portfolio and returning the
+# proceeds) pays real cash on purpose, every time — so no single payment looks
+# like an outlier against its own history, and payment-level special detection
+# above cannot catch it. Confirmed real-world cases: NLOP (spun off from W. P.
+# Carey in Nov 2023 explicitly to liquidate; "will not pay a regular dividend")
+# and SITC (a run of asset-sale special distributions, incl. $3.25/share in
+# Aug 2025, after its Oct 2024 Curbline spin-off). Both produce a trailing
+# yield of 60-160%+ that is completely real and completely non-recurring.
+LIQUIDATION_YIELD = 0.22   # median annual distribution/price above this ⇒ liquidating pattern
+ABS_YIELD_CEILING = 0.30   # backstop: no verified figure is ever published above this
 HISTORY_YEARS = 6
 BATCH = 50                 # tickers per price request
 BATCH_SLEEP = 1.2          # seconds between price batches
@@ -267,11 +277,31 @@ def audit_recurrence(ys: dict, ttm_recurring: float, price: float) -> dict:
       SPIKE    one year well above the rest              → median of the others
       ERRATIC  no pattern, high dispersion               → median, unverified
       SHORT    fewer than three years of payments        → TTM recurring
+      LIQUIDATING  distributions imply an unsustainable yield on their own
+                   → unverifiable; no recurring rate is claimed
     """
     vals = [ys["dps"].get(str(y), 0.0) for y in YEARS]
     paid = [(y, v) for y, v in zip(YEARS, vals) if v > 0]
     res = {"verdict": "SHORT", "vdps": ttm_recurring, "spike_yr": None,
            "cov": None, "verified": False}
+
+    # Checked first, before anything else, and regardless of how many years of
+    # history exist: a company selling off its portfolio and returning the
+    # proceeds pays distributions that are each individually unremarkable in
+    # size relative to each other — every one is large — so nothing above ever
+    # flags a "special", and with under three years of history (exactly the
+    # case for a REIT spun off for this purpose) it would otherwise fall
+    # straight into SHORT and have its raw TTM rubber-stamped as verified.
+    #
+    # Each year's yield is struck on that year's own price (from ys["yld"],
+    # computed in year_stats), not today's — dividing an old year's payout by
+    # today's price would conflate "the price has moved since then" with "this
+    # was a liquidating payout," which is a different thing and a false trigger.
+    paid_yields = [ys["yld"].get(str(y), 0.0) for y, v_ in paid if v_ > 0]
+    paid_yields = [yy for yy in paid_yields if yy > 0]
+    if paid_yields and float(np.median(paid_yields)) > LIQUIDATION_YIELD:
+        res.update(verdict="LIQUIDATING", vdps=0.0, verified=False)
+        return res
 
     if len(paid) < 3:
         res["vdps"] = ttm_recurring
@@ -313,6 +343,14 @@ def audit_recurrence(ys: dict, ttm_recurring: float, price: float) -> dict:
     # current recurring run-rate keeps every verified figure achievable today.
     if ttm_recurring > 0:
         res["vdps"] = min(res["vdps"], ttm_recurring)
+
+    # Backstop, independent of everything above: whatever path got here, a
+    # verified figure this high on a going-concern REIT has no precedent in
+    # free financial data that turned out to be sustainable — every case
+    # checked was this same liquidation pattern. Treat it the same way rather
+    # than publish an unverifiable outlier under a different verdict's name.
+    if price > 0 and res["vdps"] / price > ABS_YIELD_CEILING:
+        res.update(verdict="LIQUIDATING", vdps=0.0, verified=False)
     return res
 
 
@@ -985,6 +1023,75 @@ def build(args) -> dict:
     # how much the audit removed versus the naive trailing figure
     for row in rows:
         row["hc"] = round(row["ty"] - row["vy"], 5)
+
+    # ── plausibility scan ─────────────────────────────────────────────────
+    # The three checks above catch one specific, now-confirmed failure mode
+    # (a liquidating REIT). This catches everything else the same way a human
+    # reviewer would: by noticing a number sits far outside its own peers.
+    # It doesn't know *why* a value is wrong — a bad currency conversion, a
+    # stale price, a mismatched statement line, a real anomaly that deserves
+    # a look — it only knows that it doesn't resemble its neighbours, which is
+    # exactly the state a silent data error leaves behind.
+    #
+    # Robust statistics on purpose: a plain mean and standard deviation are
+    # themselves dragged around by the very outlier being hunted for. The
+    # median and MAD (median absolute deviation) are not — a peer group can
+    # contain one wildly wrong number and its median barely moves.
+    OUTLIER_METRICS = [
+        ("ry", "recurring yield", 0.10), ("ty", "TTM yield", 0.10),
+        ("vy", "verified yield", 0.10), ("pnav", "P/NAV", None),
+        ("pe", "P/E", None), ("ltv", "LTV proxy", None), ("cover", "dividend cover", None),
+    ]
+    Z_THRESH = 8.0        # deliberately high — this flags "not remotely like its peers",
+                          # not "a bit rich", so it stays rare enough to be worth reading
+    groups: dict[str, list[dict]] = {}
+    for row in rows:
+        groups.setdefault(f"{row['cc']}|{row['cat']}", []).append(row)
+
+    outlier_rows = []
+    for members in groups.values():
+        if len(members) < 4:              # too few peers for a median to mean anything
+            continue
+        for key, label, floor in OUTLIER_METRICS:
+            vals = [(m, m[key]) for m in members if m.get(key) is not None]
+            if len(vals) < 4:
+                continue
+            arr = np.array([v for _, v in vals])
+            med = float(np.median(arr))
+            mad = float(np.median(np.abs(arr - med)))
+            sigma = mad * 1.4826 if mad > 0 else max(abs(med) * 0.15, 1e-6)
+            for m, v in vals:
+                if floor is not None and abs(v) < floor:
+                    continue                        # trivial in absolute terms either way
+                z = abs(v - med) / sigma
+                if z > Z_THRESH:
+                    m.setdefault("outliers", []).append({
+                        "metric": key, "label": label, "value": round(v, 4),
+                        "peer_med": round(med, 4),
+                        "mult": round(v / med, 2) if med else None,
+                    })
+    for row in rows:
+        if row.get("outliers"):
+            row["flag_outlier"] = True
+            outlier_rows.append(row)
+
+    if outlier_rows:
+        print(f"\nplausibility scan: {len(outlier_rows)} name(s) sit far outside their "
+              f"(country, sector) peers — verify before relying on these:")
+        for r in outlier_rows[:20]:
+            for o in r["outliers"]:
+                mult = f"{o['mult']}×" if o["mult"] is not None else "—"
+                print(f"   {r['t']:<12} {o['label']:<16} {o['value']:>10}  "
+                      f"peer median {o['peer_med']:>10}  ({mult} peer median)")
+        if len(outlier_rows) > 20:
+            print(f"   … and {len(outlier_rows) - 20} more")
+
+    liq = [r for r in rows if r["aud"] == "LIQUIDATING"]
+    if liq:
+        print(f"\n{len(liq)} name(s) classified LIQUIDATING — distributions imply an "
+              f"unsustainable yield on their own basis, so no recurring rate is claimed:")
+        for r in liq[:20]:
+            print(f"   {r['t']:<12} {r['n'][:30]:<30} ttm {r['ty']*100:6.2f}%")
 
     n_hy = sum(1 for r in rows if r["ry"] >= 0.06)
     n_flag = sum(1 for r in rows if r["ry"] >= 0.06 and r["aud"] in ("SPIKE", "FADE", "ERRATIC"))

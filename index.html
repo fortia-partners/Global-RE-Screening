@@ -336,6 +336,8 @@ tr.r:hover td.nm{color:var(--ink)}
   border:1px solid currentColor;border-radius:1px;padding:0 3px;line-height:13px;opacity:.9
 }
 .f.cut{color:var(--warn)} .f.var{color:var(--sig)} .f.spc{color:var(--hi)} .f.grw{color:var(--ok)}
+.f.out{color:var(--warn);border-width:1.5px;font-weight:800}
+body.sigma .f.out{color:#fff;background:var(--warn);border-color:var(--warn)}
 svg.spark{display:block}
 
 tr.agg td{
@@ -542,6 +544,7 @@ table.yt td.sp{color:var(--sig)}
       <div class="opt" role="checkbox" aria-checked="false" data-f="nonpayer"><span class="box"></span><span data-lbl="Non-payers">Non-payers</span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="cut"><span class="box"></span><span data-lbl="Recently cut">Recently cut</span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="var"><span class="box"></span><span data-lbl="Variable distribution">Variable distribution</span></div>
+      <div class="opt" role="checkbox" aria-checked="false" data-f="outlier"><span class="box"></span><span data-lbl="Statistical outliers">Statistical outliers</span><span class="cnt" id="c-outlier"></span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="mortgage"><span class="box"></span><span data-lbl="Mortgage REITs">Mortgage REITs</span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="nonreit"><span class="box"></span>Developers &amp; services</div>
     </div>
@@ -628,6 +631,10 @@ const VERDICT={
   SPIKE  :{c:"var(--sig)", t:"One year sits well above the rest — that year is excluded"},
   ERRATIC:{c:"var(--warn)",t:"No pattern and high dispersion — treat the yield as unverified"},
   SHORT  :{c:"var(--mut)", t:"Fewer than three years of payments — nothing to verify against"},
+  LIQUIDATING:{c:"var(--warn)",
+    t:"Distributions imply an unsustainable yield on their own — this is very likely a REIT "+
+      "explicitly winding down and returning sale proceeds (e.g. NLOP, SITC), not a repeatable "+
+      "payout. No recurring rate is claimed."},
 };
 const verdict=v=>{const d=VERDICT[v]||VERDICT.SHORT;
   return `<span class="f" style="color:${d.c}" title="${d.t}">${v}</span>`;};
@@ -1208,6 +1215,7 @@ const T={
     "Min market cap":"VALOR DE MERCADO MÍN", "Screen out":"EXCLUIR",
     "Non-payers":"Sem dividendo", "Recently cut":"Cortaram recentemente",
     "Variable distribution":"Distribuição variável", "Mortgage REITs":"REITs hipotecários",
+    "Statistical outliers":"Outliers estatísticos",
     "Developers & services":"Incorporadoras e serviços",
     Region:"REGIÃO", "Property type":"TIPO DE ATIVO", All:"TODOS", None:"NENHUM",
     "Sort within group":"ORDENAR NO GRUPO", Recurring:"RECORRENTE",
@@ -1280,6 +1288,10 @@ function showGate(){
 
 function flags(r){
   const f=[];
+  if(r.flag_outlier&&r.outliers&&r.outliers.length){
+    const tip=r.outliers.map(o=>`${o.label}: ${o.value} vs peer median ${o.peer_med} (${o.mult}\u00d7)`).join(" \u2022 ");
+    f.push(`<span class="f out" title="Sits far outside its (country, sector) peers on: ${tip}. Verify before relying on this row.">OUT</span>`);
+  }
   if(r.cut) f.push('<span class="f cut" title="Recurring distribution is more than 10% below its 3-year peak">CUT</span>');
   if(r.var) f.push('<span class="f var" title="Payment size varies materially — the indicated rate is unreliable">VAR</span>');
   if(r.spc>0.05) f.push(`<span class="f spc" title="${Math.round(r.spc*100)}% of the trailing-12m payout was a special, and is excluded from the recurring figure">SPL</span>`);
@@ -1304,6 +1316,7 @@ function apply(){
     if(S.flags.has("nonpayer") && r.ry<=0) return false;
     if(S.flags.has("cut") && r.cut) return false;
     if(S.flags.has("var") && r.var) return false;
+    if(S.flags.has("outlier") && r.flag_outlier) return false;
     if(S.flags.has("mortgage") && r.veh==="MORTGAGE") return false;
     if(S.flags.has("nonreit") && (r.veh==="DEVELOPER"||r.veh==="SERVICES")) return false;
     if(S.flags.has("hy6") && r.ry<0.06) return false;
@@ -1788,6 +1801,7 @@ async function boot(){
       "figure is frozen at the build time shown to the left."; }
   $("#c-hy6").textContent=ROWS.filter(r=>r.ry>=0.06).length;
   $("#c-unver").textContent=ROWS.filter(r=>!r.ver).length;
+  $("#c-outlier").textContent=ROWS.filter(r=>r.flag_outlier).length;
   buildRail(); localiseChrome(); renderHead(); wire(); apply(); paintLiveChip();
   $("#t-lang").textContent=LANG==="pt"?"EN":"PT";
 }
