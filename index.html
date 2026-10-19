@@ -21,6 +21,8 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
+html,body{overflow-x:hidden}     /* the page itself must never scroll sideways —
+  only the table pane and the header, each on their own, are allowed to */
 body{
   background:var(--g0);color:var(--ink);font-family:var(--sans);font-size:13px;
   -webkit-font-smoothing:antialiased;overflow:hidden;
@@ -46,6 +48,56 @@ button{cursor:pointer}
    Next.js and so cannot be read from outside. Whoever maintains SIGMA should
    paste its actual custom properties over this block — it is deliberately kept
    to one place so that is a thirty-second edit rather than a hunt. */
+/* ── Robinhood theme ───────────────────────────────────────────────────
+   Real, cross-confirmed brand values, not a guess: Robinhood Green #00C805,
+   warm loss-red #FF5000 (deliberately not pure #FF0000 — Robinhood's own
+   reasoning is that a harsh alarm-red reads as "error" rather than "down"),
+   near-black #1E2124, white. Typography leans on the same system-font
+   grotesque feel as their licensed Maison Neue, since that face itself isn't
+   embeddable here. Their own rule is followed too: green is rationed to
+   positive signal only, never used as decoration. */
+body.rh{
+  --g0:#1E2124; --g1:#24282C; --g2:#2C3136; --g3:#363C42;
+  --ln:#32373D; --ln2:#454C53;
+  --ink:#FFFFFF; --dim:#9CA3AC; --mut:#6B7280;
+  --sig:#00C805; --sig-d:#0A5A08;
+  --hi:#00C805;
+  --warn:#FF5000; --ok:#00C805;
+  --mono:"SF Mono",ui-monospace,Menlo,monospace;
+  --cond:-apple-system,"Inter",system-ui,sans-serif;
+  --sans:-apple-system,"Inter",system-ui,sans-serif;
+}
+body.rh::before{display:none}
+body.rh header,body.rh footer{background:var(--g0)}
+body.rh .brand{font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+body.rh .brand em{color:var(--sig)}
+body.rh .brand::after{display:none}             /* no terminal cursor blink here */
+body.rh thead th{background:var(--g0);color:var(--dim);border-bottom:1px solid var(--ln);
+  font-weight:600;letter-spacing:0}
+body.rh th.g{color:var(--mut)}
+body.rh tr.band td{background:var(--g0);border-bottom:1px solid var(--ln)}
+body.rh tr.band h2{color:var(--ink);font-weight:800}
+body.rh tr.sub h3{color:var(--dim);font-weight:700}
+body.rh tr.sub .dot{background:var(--sig)}
+body.rh tr.agg td{background:var(--g1);border-top:1px solid var(--ln);
+  border-bottom:1px solid var(--ln);color:var(--ink);font-weight:700}
+body.rh th.tkr,body.rh td.tkr,body.rh th.nm,body.rh td.nm,
+body.rh th.rk,body.rh td.rk{background:var(--g0)}
+body.rh tr.r:hover td{background:var(--g1)}
+body.rh tr.r:hover td.tkr,body.rh tr.r:hover td.nm{background:var(--g1)}
+body.rh .y{color:var(--sig);font-weight:700}
+body.rh .n2.pos{color:var(--ok)} body.rh .n2.neg{color:var(--warn)}
+body.rh #drawer{background:var(--g0)}
+body.rh .chip{border-radius:18px;border-color:var(--ln2)}
+body.rh .chip.demo{color:var(--g0);background:var(--sig);border-color:var(--sig)}
+body.rh .segs,body.rh .segs button{border-radius:10px}
+body.rh .segs button[aria-pressed="true"]{background:var(--sig);color:#fff;font-weight:700}
+body.rh .opt[aria-checked="true"] .box{background:var(--sig);border-color:var(--sig);border-radius:4px}
+body.rh .opt[aria-checked="true"] .box::after{border-color:#fff}
+body.rh .gatebox button{background:var(--sig);color:#fff;border-radius:24px;font-weight:700}
+body.rh .gatebox input{border-radius:12px}
+body.rh .f.out{background:var(--warn);color:#fff;border-radius:6px;border-color:var(--warn)}
+
 body.sigma{
   --g0:#000000; --g1:#0A0A0A; --g2:#141414; --g3:#1C1C1C;
   --ln:#1F1F1F; --ln2:#333333;
@@ -277,6 +329,7 @@ body.scrolled .brand{font-size:13px}
 
 @media(max-width:1180px){ th.p3,td[data-p="3"]{display:none} }
 @media(max-width:820px){  th.p2,td[data-p="2"]{display:none} }
+@media(max-width:480px){  th.p1,td[data-p="1"]{display:none} }
 
 /* ── table pane ──────────────────────────────────────────────────────── */
 section{overflow-y:auto;overflow-x:auto;position:relative}
@@ -363,6 +416,13 @@ tr.agg td.nm{font-family:var(--cond);font-size:9px;letter-spacing:.08em;text-tra
   text-transform:uppercase;padding:11px;border-radius:2px}
 .gatebox button:hover{opacity:.9}
 .gateerr{font-size:11px;color:var(--warn);margin-top:12px;min-height:14px}
+#xnote{padding:9px 14px;font-size:12px;line-height:1.5;color:var(--dim);
+  background:var(--g1);border-bottom:1px solid var(--ln2)}
+#xnote div{padding:1px 0}
+#xnote b{color:var(--ink);font-weight:600}
+#xnote .xt{font-family:var(--mono);font-size:11px;color:var(--mut);margin:0 5px}
+#xnote .xl{font-family:var(--cond);font-weight:700;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--sig);margin-right:8px}
 .empty{padding:70px 24px;text-align:center;color:var(--mut)}
 .empty h4{font-family:var(--cond);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
 
@@ -458,7 +518,51 @@ table.yt td.sp{color:var(--sig)}
     transform:translateX(-100%);transition:transform .22s ease;background:var(--g1)}
   aside.open{transform:none;display:block}
   main.collapsed aside{display:block}
-  td.nm{display:none} thead th.nm{display:none}
+}
+
+/* Phone. The header previously laid out brand, three stats, a search box and
+   five toggle buttons in one unwrapped flex row — comfortably wide enough on a
+   laptop, but on a ~375px screen that has nowhere to go, so it forced the
+   *entire page* to scroll sideways, header and all, rather than just the
+   table. This keeps the header to the handful of controls that actually
+   matter on a phone and lets it scroll on its own if anything still doesn't
+   fit, so a narrow screen is cramped at worst, never broken. */
+@media(max-width:620px){
+  header{gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  header::-webkit-scrollbar{display:none}
+  .hstat,.tick{display:none}
+  #t-live,#s-live,#t-lang,#t-dense,#t-theme{display:none}
+  #search{flex:1 1 auto;min-width:72px;margin-left:8px}
+  .brand{font-size:13px}
+  td.nm{display:none} thead th.nm{display:none}   /* name column too tight to keep on phone */
+
+  /* ── phone card list, Dividend view only ───────────────────────────────
+     This is the part actually worth borrowing from Robinhood: a list shows
+     name on the left and exactly one big, colored headline number on the
+     right — nothing else — and the rest lives behind a tap. Scoped to the
+     Dividend view specifically, since the other six views are comparison
+     tools built for a wide screen and a scrolling table remains the honest
+     answer for them; collapsing twenty columns into one number per row would
+     just be lossy, not simplified. */
+  body[data-cols="yield"] thead{display:none}
+  body[data-cols="yield"] #tb tr.r{
+    display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;
+    column-gap:10px;row-gap:2px;padding:13px 14px;margin:0 8px 7px;
+    border-radius:14px;background:var(--g1);border:none;position:static;
+  }
+  body[data-cols="yield"] #tb tr.r:active{background:var(--g2)}
+  body[data-cols="yield"] #tb tr.r td{border:none;padding:0;background:transparent!important;
+    position:static;white-space:normal;overflow:visible}
+  body[data-cols="yield"] #tb tr.r td.tkr{grid-column:1;grid-row:1;font-size:15px;max-width:none}
+  body[data-cols="yield"] #tb tr.r td.tkr::after{display:none}      /* the live-quote dot doesn't fit this layout */
+  body[data-cols="yield"] #tb tr.r td.nm{display:block!important;grid-column:1;grid-row:2;
+    font-size:12px;color:var(--mut)}
+  body[data-cols="yield"] #tb tr.r td:nth-child(3){grid-column:2;grid-row:1/3;
+    align-self:center;text-align:right}
+  body[data-cols="yield"] #tb tr.r td:nth-child(3) .y{font-size:21px;font-weight:800}
+  body[data-cols="yield"] #tb tr.r td:nth-child(n+4){display:none}  /* everything else: tap the row instead */
+  body[data-cols="yield"] tr.band td,body[data-cols="yield"] tr.sub td{padding-left:18px}
+  body[data-cols="yield"] tr.agg{display:none}    /* a median row needs the hidden columns to mean anything */
 }
 </style>
 </head>
@@ -560,6 +664,7 @@ table.yt td.sp{color:var(--sig)}
   </aside>
 
   <section id="pane">
+    <div id="xnote" hidden></div>
     <table>
       <thead><tr id="thg"></tr><tr id="th"></tr></thead>
       <tbody id="tb"><tr><td colspan="14" class="skel">
@@ -631,10 +736,12 @@ const VERDICT={
   SPIKE  :{c:"var(--sig)", t:"One year sits well above the rest — that year is excluded"},
   ERRATIC:{c:"var(--warn)",t:"No pattern and high dispersion — treat the yield as unverified"},
   SHORT  :{c:"var(--mut)", t:"Fewer than three years of payments — nothing to verify against"},
-  LIQUIDATING:{c:"var(--warn)",
-    t:"Distributions imply an unsustainable yield on their own — this is very likely a REIT "+
-      "explicitly winding down and returning sale proceeds (e.g. NLOP, SITC), not a repeatable "+
-      "payout. No recurring rate is claimed."},
+  SUSPENDED:{c:"var(--warn)",
+    t:"Paid in earlier years, nothing in the last 12 months — the dividend is suspended, so no yield is shown."},
+  UNVERIFIABLE:{c:"var(--warn)",
+    t:"The distributions imply a yield too high to treat as repeatable, so no recurring rate is shown. "+
+      "Free data cannot tell the causes apart: a wind-down (NLOP, SITC, AIV), asset-sale specials, or "+
+      "a price collapse ahead of a cut. Check the filings."},
 };
 const verdict=v=>{const d=VERDICT[v]||VERDICT.SHORT;
   return `<span class="f" style="color:${d.c}" title="${d.t}">${v}</span>`;};
@@ -711,7 +818,7 @@ const C={
   c27 :{p:2,l:"Conf",cell:r=>td(r.c27==="none"?"—":r.c27,"n2",`color:${CONF[r.c27]}`)},
   g3  :{p:2,l:"DPS 3y",s:"g3",aggk:"g3",cell:r=>tds(r.g3)},
   po  :{p:2,l:"Payout",s:"po",aggk:"po",cell:r=>tdp(r.po,0)},
-  cover:{l:"Cover",s:"cover",aggk:"cover",cell:r=>tdCover(r.cover),aggf:v=>v.toFixed(2)+"\u00d7"},
+  cover:{p:1,l:"Cover",s:"cover",aggk:"cover",cell:r=>tdCover(r.cover),aggf:v=>v.toFixed(2)+"\u00d7"},
   mcap:{p:3,l:"Mkt cap $m",s:"mcap",aggk:"mcap",cell:r=>td(xm(r.mcap)),aggf:xm},
   ev  :{p:3,l:"EV $m",s:"ev",aggk:"ev",cell:r=>td(xm(r.ev)),aggf:xm},
   nd  :{l:"Net debt $m",s:"nd",aggk:"nd",cell:r=>td(xm(r.nd)),aggf:xm},
@@ -1292,6 +1399,9 @@ function flags(r){
     const tip=r.outliers.map(o=>`${o.label}: ${o.value} vs peer median ${o.peer_med} (${o.mult}\u00d7)`).join(" \u2022 ");
     f.push(`<span class="f out" title="Sits far outside its (country, sector) peers on: ${tip}. Verify before relying on this row.">OUT</span>`);
   }
+  if(r.aud==="SUSPENDED") f.push('<span class="f cut" title="Paid in earlier years, nothing in the last 12 months — the dividend is suspended, so no yield is shown">SUSP</span>');
+  if(r.aud==="UNVERIFIABLE") f.push('<span class="f cut" title="The distributions imply a yield too high to treat as repeatable (wind-down, asset-sale specials, or a price collapse ahead of a cut). No recurring rate is shown — check the filings">UNV</span>');
+  if(r.thin) f.push(`<span class="f var" title="Average daily value traded is about $${Math.round(r.adv)}k, under the liquidity floor. Kept because it was asked for by name — read prices and yields with that in mind">THIN</span>`);
   if(r.cut) f.push('<span class="f cut" title="Recurring distribution is more than 10% below its 3-year peak">CUT</span>');
   if(r.var) f.push('<span class="f var" title="Payment size varies materially — the indicated rate is unreliable">VAR</span>');
   if(r.spc>0.05) f.push(`<span class="f spc" title="${Math.round(r.spc*100)}% of the trailing-12m payout was a special, and is excluded from the recurring figure">SPL</span>`);
@@ -1323,6 +1433,7 @@ function apply(){
     if(S.flags.has("unver") && r.ver) return false;
     return true;
   });
+  paintExcluded();
   const k=S.sort, d=S.dir;
   VIEW.sort((a,b)=>{
     let x=k==="vspm"?(a.ry>0&&a.pm>0?a.ry-a.pm:null):a[k];
@@ -1336,6 +1447,7 @@ function apply(){
 
 function setCols(k){
   S.cols=k;
+  document.body.dataset.cols=k;    // lets phone-width CSS target the Dividend view specifically
   // each view opens on the sort that view is actually for
   const DEF={audit:"vy",comp:"vy",val:"disc",lev:"gear",brg:"gear",ret:"rytd",hist:"ry",yield:"ry"};
   const keys=COLSETS[k].map(c=>c.s).filter(Boolean);
@@ -1350,6 +1462,39 @@ function sortBy(k){
   $$("#seg-sort button,#seg-sort2 button").forEach(x=>
     x.setAttribute("aria-pressed",String(x.dataset.k===k)));
   renderHead(); apply();
+}
+
+/* ── why a name is missing ───────────────────────────────────────────────
+   The snapshot lists every company that was in the universe but did not make it
+   in, with the reason. When a search matches one, say so. Without this a name
+   just vanished and the only way to learn why was to ask someone. */
+const XW={
+  en:{lead:"Not shown", region:"outside the regions being built",
+      nodata:"no price came back (delisted, taken private, or a wrong symbol)",
+      fx:"no FX rate available", sector:"the symbol resolved to a company that is not property",
+      thin:(d,f)=>`average daily value traded is about $${d}k, under the $${f}k liquidity floor`},
+  pt:{lead:"N\u00e3o exibido", region:"fora das regi\u00f5es em constru\u00e7\u00e3o",
+      nodata:"nenhum pre\u00e7o retornado (deslistada, fechou capital ou s\u00edmbolo errado)",
+      fx:"sem taxa de c\u00e2mbio", sector:"o s\u00edmbolo resolveu para uma empresa que n\u00e3o \u00e9 imobili\u00e1ria",
+      thin:(d,f)=>`valor m\u00e9dio negociado por dia \u00e9 cerca de US$${d}k, abaixo do piso de liquidez de US$${f}k`},
+};
+function excludedMatches(q){
+  q=(q||"").trim().toLowerCase();
+  if(q.length<2||!DB||!DB.excluded) return [];
+  return DB.excluded.filter(e=>e.t.toLowerCase().includes(q)||e.n.toLowerCase().includes(q)).slice(0,6);
+}
+function excludedWhy(e){
+  const L=XW[LANG]||XW.en, floor=Math.round((DB.min_adv_usd||1e5)/1e3);
+  if(e.w==="thin") return L.thin(e.d,floor);
+  if(e.w==="fx") return L.fx+" ("+e.d+")";
+  return L[e.w]||e.w;
+}
+function paintExcluded(){
+  const el=$("#xnote"); if(!el) return;
+  const m=excludedMatches(S.q);
+  el.hidden=!m.length;
+  el.innerHTML=m.map(e=>`<div><span class="xl">${(XW[LANG]||XW.en).lead}</span><b>${e.n}</b>`+
+    `<span class="xt">${e.t}</span>\u2014 ${excludedWhy(e)}</div>`).join("");
 }
 
 const med=a=>{ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y),m=s.length>>1;
@@ -1690,19 +1835,20 @@ function wire(){
     });
   },{passive:true});
 
-  // three looks: SIGMA (matches market.nilusholding.com), the cyanotype
-  // terminal, and banker print. Parenthesised negatives belong to print only.
-  const THEMES=["sigma","","ib"], TLABEL={sigma:"SIGMA",  "":"CYAN", ib:"BANKER"};
+  // four looks: SIGMA (matches market.nilusholding.com), the cyanotype
+  // terminal, banker print, and Robinhood's real verified palette. Parenthesised
+  // negatives belong to print only.
+  const THEMES=["sigma","","ib","rh"], TLABEL={sigma:"SIGMA", "":"CYAN", ib:"BANKER", rh:"ROBINHOOD"};
   let ti=0;
   const applyTheme=()=>{
-    document.body.classList.remove("sigma","ib");
+    document.body.classList.remove("sigma","ib","rh");
     const th=THEMES[ti];
     if(th) document.body.classList.add(th);
     PAREN=(th==="ib");
-    $("#t-theme").textContent=TLABEL[THEMES[(ti+1)%3]];
+    $("#t-theme").textContent=TLABEL[THEMES[(ti+1)%THEMES.length]];
     renderHead(); apply();
   };
-  $("#t-theme").addEventListener("click",()=>{ ti=(ti+1)%3; applyTheme(); });
+  $("#t-theme").addEventListener("click",()=>{ ti=(ti+1)%THEMES.length; applyTheme(); });
   applyTheme();
 
   $("#t-rail").addEventListener("click",()=>{

@@ -50,8 +50,22 @@ SPECIAL_MULT = 1.75        # payment > this × baseline ⇒ treat excess as spec
 # and SITC (a run of asset-sale special distributions, incl. $3.25/share in
 # Aug 2025, after its Oct 2024 Curbline spin-off). Both produce a trailing
 # yield of 60-160%+ that is completely real and completely non-recurring.
-LIQUIDATION_YIELD = 0.22   # median annual distribution/price above this ⇒ liquidating pattern
-ABS_YIELD_CEILING = 0.30   # backstop: no verified figure is ever published above this
+#
+# Thresholds are per vehicle, and that is a correction, not a refinement. The
+# first version used 22% / 30% for everything and mislabelled four mortgage
+# REITs (ABR, IVR, GPMT, CMTG) as liquidating: mortgage REITs run at 10-25% as a
+# matter of course, so a limit calibrated on property REITs fires on ordinary
+# high-yield names. They are held to a higher bar; distress in that group is
+# already visible through the CUT flag and the yield itself.
+YIELD_LIMITS = {
+    # vehicle      (median per-year yield that marks the pattern, hard ceiling)
+    "default":      (0.22, 0.30),
+    "MORTGAGE":     (0.40, 0.50),
+}
+# Names kept even though they fall under the liquidity floor, because they were
+# asked for by name. They carry a THIN badge so the low liquidity stays visible
+# rather than being quietly hidden by the filter or quietly ignored.
+KEEP_THIN = {"WEHB.BR"}      # Wereldhave Belgium: ~1.7k shares/day, ~EUR 84k/day
 HISTORY_YEARS = 6
 BATCH = 50                 # tickers per price request
 BATCH_SLEEP = 1.2          # seconds between price batches
@@ -157,7 +171,7 @@ def analyse_dividends(divs: pd.Series, asof: pd.Timestamp) -> dict:
     """
     out = dict(freq=0, ttm_total=0.0, ttm_recurring=0.0, indicated=0.0,
                special_ttm=0.0, variable=False, cut=False, streak=0, cagr3=None,
-               last_pay=None, n_pay_5y=0)
+               last_pay=None, n_pay_5y=0, lapsed=False)
     if divs is None or len(divs) == 0:
         return out
 
@@ -201,8 +215,16 @@ def analyse_dividends(divs: pd.Series, asof: pd.Timestamp) -> dict:
     if len(regular) == 0:
         regular = np.array([base])
 
+    # A dividend that has stopped is not a dividend that is being paid. With no
+    # payment in the window below, the old fallback was to annualise the historical
+    # baseline — which is how CMTG (last paid Sep 2024) showed an 85% indicated
+    # yield and CMCT (last paid Jul 2024) showed 18,477%. A payer is treated as
+    # lapsed once it is overdue by well more than its own payment interval.
+    days_since = (asof - d.index[-1]).days
+    out["lapsed"] = bool(days_since > 1.75 * (365.0 / freq) + 45)
+
     # indicated (forward) rate: most recent regular payment, annualised
-    out["indicated"] = float(regular[-1]) * freq
+    out["indicated"] = 0.0 if out["lapsed"] else float(regular[-1]) * freq
 
     # variable distributions make the indicated rate unreliable — say so
     reg3 = d3.values[d3.values <= SPECIAL_MULT * base]
@@ -262,45 +284,27 @@ def year_stats(divs: pd.Series, close: pd.Series, asof: pd.Timestamp) -> dict:
     return out
 
 
-def audit_recurrence(ys: dict, ttm_recurring: float, price: float) -> dict:
-    """
-    Decide what part of the payout history is actually repeatable.
-
-    A trailing-twelve-month yield cannot distinguish a REIT that pays 8% every
-    year from one that paid 4% three times and 20% once. This compares the
-    calendar years against each other and returns the figure that survives.
-
-    Verdicts
-      STABLE   every year within ±18% of the median      → median
-      RAMP     rising through the period                 → latest year
-      FADE     falling through the period                → latest year
-      SPIKE    one year well above the rest              → median of the others
-      ERRATIC  no pattern, high dispersion               → median, unverified
-      SHORT    fewer than three years of payments        → TTM recurring
-      LIQUIDATING  distributions imply an unsustainable yield on their own
-                   → unverifiable; no recurring rate is claimed
-    """
+def _audit_core(ys: dict, ttm_recurring: float, price: float, liq_yield: float) -> dict:
+    """The verdict itself. Rules that must hold on every path live in the wrapper
+    below, not here — this function has several early returns, and anything
+    placed at its end silently does not apply to them."""
     vals = [ys["dps"].get(str(y), 0.0) for y in YEARS]
     paid = [(y, v) for y, v in zip(YEARS, vals) if v > 0]
     res = {"verdict": "SHORT", "vdps": ttm_recurring, "spike_yr": None,
            "cov": None, "verified": False}
 
     # Checked first, before anything else, and regardless of how many years of
-    # history exist: a company selling off its portfolio and returning the
-    # proceeds pays distributions that are each individually unremarkable in
-    # size relative to each other — every one is large — so nothing above ever
-    # flags a "special", and with under three years of history (exactly the
-    # case for a REIT spun off for this purpose) it would otherwise fall
-    # straight into SHORT and have its raw TTM rubber-stamped as verified.
+    # history exist. A company selling off its portfolio and returning the
+    # proceeds pays distributions that are each large, so none stands out against
+    # the others and the special-payment detector never fires.
     #
-    # Each year's yield is struck on that year's own price (from ys["yld"],
-    # computed in year_stats), not today's — dividing an old year's payout by
-    # today's price would conflate "the price has moved since then" with "this
-    # was a liquidating payout," which is a different thing and a false trigger.
+    # Each year's yield is struck on that year's own price (ys["yld"], from
+    # year_stats), not today's: dividing an old payout by today's price would mix
+    # up "the price has moved since" with "this payout was oversized".
     paid_yields = [ys["yld"].get(str(y), 0.0) for y, v_ in paid if v_ > 0]
     paid_yields = [yy for yy in paid_yields if yy > 0]
-    if paid_yields and float(np.median(paid_yields)) > LIQUIDATION_YIELD:
-        res.update(verdict="LIQUIDATING", vdps=0.0, verified=False)
+    if paid_yields and float(np.median(paid_yields)) > liq_yield:
+        res.update(verdict="UNVERIFIABLE", vdps=0.0, verified=False)
         return res
 
     if len(paid) < 3:
@@ -321,8 +325,8 @@ def audit_recurrence(ys: dict, ttm_recurring: float, price: float) -> dict:
 
     # Trend is tested before spikes, and the order matters: a steadily falling
     # payout always makes its earliest year look like a spike against the median,
-    # so checking spikes first would label decliners SPIKE and then verify them
-    # on the average of their better years — exactly the error this is meant to catch.
+    # so checking spikes first would label decliners SPIKE and verify them on the
+    # average of their better years.
     if rising:
         res.update(verdict="RAMP", vdps=float(v[-1]), verified=True)
     elif falling:
@@ -336,21 +340,56 @@ def audit_recurrence(ys: dict, ttm_recurring: float, price: float) -> dict:
         res.update(verdict="STABLE", vdps=core, verified=True)
     else:
         res.update(verdict="ERRATIC", vdps=core, verified=False)
+    return res
 
-    # The audit only ever cuts. Calendar-year DPS is historical, but the yield is
-    # struck on today's price, so a company that paid more in 2023 than it does now
-    # would otherwise be credited with a yield it no longer offers. Capping at the
-    # current recurring run-rate keeps every verified figure achievable today.
-    if ttm_recurring > 0:
-        res["vdps"] = min(res["vdps"], ttm_recurring)
 
-    # Backstop, independent of everything above: whatever path got here, a
-    # verified figure this high on a going-concern REIT has no precedent in
-    # free financial data that turned out to be sustainable — every case
-    # checked was this same liquidation pattern. Treat it the same way rather
-    # than publish an unverifiable outlier under a different verdict's name.
-    if price > 0 and res["vdps"] / price > ABS_YIELD_CEILING:
-        res.update(verdict="LIQUIDATING", vdps=0.0, verified=False)
+def audit_recurrence(ys: dict, ttm_recurring: float, price: float,
+                     vehicle: str | None = None) -> dict:
+    """
+    Decide what part of the payout history is actually repeatable.
+
+    A trailing-twelve-month yield cannot distinguish a REIT that pays 8% every
+    year from one that paid 4% three times and 20% once. This compares the
+    calendar years against each other and returns the figure that survives.
+
+    Verdicts
+      STABLE   every year within ±18% of the median      → median
+      RAMP     rising through the period                 → latest year
+      FADE     falling through the period                → latest year
+      SPIKE    one year well above the rest              → median of the others
+      ERRATIC  no pattern, high dispersion               → median, unverified
+      SHORT    fewer than three years of payments        → TTM recurring
+      SUSPENDED    paid before, nothing in the last 12 months → no yield
+      UNVERIFIABLE the distributions imply a yield too high to treat as
+                   repeatable → no recurring rate is claimed. The cause is not
+                   something free data can tell apart: a wind-down (NLOP, SITC,
+                   AIV), asset-sale specials, or a price collapse ahead of a cut.
+
+    Three rules apply to every verdict, whichever path produced it. They live
+    here and not in the core because the core returns early in several places,
+    and a rule written at its end only covers the paths that reach the end —
+    which is how NLOP slipped past the first version of the ceiling.
+    """
+    liq_yield, ceiling = YIELD_LIMITS.get(vehicle, YIELD_LIMITS["default"])
+    res = _audit_core(ys, ttm_recurring, price, liq_yield)
+
+    # 1. Nothing paid in the last twelve months. Before this rule the verified
+    #    figure fell back on the historical median, so a company that had stopped
+    #    paying still showed a yield. Zero, and say why.
+    if ttm_recurring <= 0:
+        had_history = any(ys["dps"].get(str(y), 0.0) > 0 for y in YEARS)
+        res.update(vdps=0.0, spike_yr=None)
+        if had_history:
+            res.update(verdict="SUSPENDED", verified=True)
+        return res
+
+    # 2. The audit only ever cuts: never above the current recurring run-rate.
+    res["vdps"] = min(res["vdps"], ttm_recurring)
+
+    # 3. Ceiling. A verified figure above this has no precedent in free data that
+    #    turned out to be repeatable. Higher for mortgage REITs, which sit higher.
+    if price > 0 and res["vdps"] / price > ceiling:
+        res.update(verdict="UNVERIFIABLE", vdps=0.0, verified=False)
     return res
 
 
@@ -843,9 +882,26 @@ def build(args) -> dict:
     if args.limit:
         uni = uni[:args.limit]
     total = len(uni)
-    uni = [r for r in uni
-           if region_of(r["country"]) in INCLUDE_REGIONS
-           and r["country"] not in EXCLUDE_COUNTRIES]
+
+    # Every name that does not make it into the snapshot is recorded with the
+    # reason, and shipped in snapshot["excluded"]. Before this, a name could simply
+    # vanish — Wereldhave Belgium trades ~EUR 84k a day, just under the liquidity
+    # floor, and nothing anywhere said so. The page now explains an absence when
+    # you search for the name.
+    excluded: list[dict] = []
+
+    def _ex(row, why, detail=""):
+        excluded.append({"t": row["ticker"], "n": (row.get("name") or row["ticker"])[:40],
+                         "cc": row["country"], "w": why, "d": detail})
+
+    def _in_scope(row):
+        return (region_of(row["country"]) in INCLUDE_REGIONS
+                and row["country"] not in EXCLUDE_COUNTRIES)
+
+    for r_ in uni:
+        if not _in_scope(r_):
+            _ex(r_, "region")
+    uni = [r for r in uni if _in_scope(r)]
     tickers = [r["ticker"] for r in uni]
     print(f"universe: {len(tickers)} of {total} names "
           f"({total - len(tickers)} outside {sorted(INCLUDE_REGIONS)})")
@@ -873,6 +929,7 @@ def build(args) -> dict:
         df = px.get(t)
         if df is None or "Close" not in df or df["Close"].dropna().empty:
             dropped["no_price"] += 1
+            _ex(r, "nodata")
             continue
         close = df["Close"].dropna()
         price = float(close.iloc[-1])
@@ -881,12 +938,14 @@ def build(args) -> dict:
             nfo = synth_info(t, price, guess_ccy(t))
         if price <= 0:
             dropped["no_price"] += 1
+            _ex(r, "nodata")
             continue
 
         ok, why = sector_ok(nfo, r.get("name", ""))
         if not ok:
             dropped["wrong_sector"] += 1
             misresolved.append(f"{t} ({r.get('name','?')}) — {why}")
+            _ex(r, "sector", why)
             continue
 
         ccy_raw = nfo.get("currency") or guess_ccy(t)
@@ -894,6 +953,7 @@ def build(args) -> dict:
         rate = fx.get(ccy)
         if not rate:
             dropped["no_ccy"] += 1
+            _ex(r, "fx", str(ccy))
             continue
         to_usd = rate / unit
 
@@ -901,14 +961,16 @@ def build(args) -> dict:
         tail = df.tail(30)
         dv = (tail["Close"] * tail["Volume"]).dropna()
         adv_usd = float(np.median(dv.values)) * to_usd if len(dv) else 0.0
-        if adv_usd < MIN_ADV_USD:
+        thin = adv_usd < MIN_ADV_USD
+        if thin and t not in KEEP_THIN:
             dropped["thin"] += 1
+            _ex(r, "thin", f"{adv_usd/1e3:.0f}")
             continue
 
         divs = df["Dividends"] if "Dividends" in df else pd.Series(dtype=float)
         dv_stats = analyse_dividends(divs, asof)
         ys = year_stats(divs, close, asof)
-        aud = audit_recurrence(ys, dv_stats["ttm_recurring"], price)
+        aud = audit_recurrence(ys, dv_stats["ttm_recurring"], price, r.get("vehicle"))
 
         rec_y = dv_stats["ttm_recurring"] / price if price else 0.0
         ind_y = dv_stats["indicated"] / price if price else 0.0
@@ -967,6 +1029,8 @@ def build(args) -> dict:
             "po": round(payout, 3) if payout is not None else None,
             "r1y": round(r1y, 4) if r1y is not None else None,
             "lp": dv_stats["last_pay"],
+            "lap": dv_stats["lapsed"],
+            "thin": bool(thin),
             "sp": sp,
             # per-year history — DPS in listing currency, yield on that year's close
             "dps": ys["dps"],
@@ -982,6 +1046,26 @@ def build(args) -> dict:
         })
 
     print(f"kept {len(rows)}  |  dropped: {dropped}")
+
+    # Why names are absent, by reason — and the near-misses on liquidity, since
+    # those are the ones most likely to be asked about: real companies sitting just
+    # under the floor, not companies the data could not find.
+    by_why: dict[str, int] = {}
+    for e in excluded:
+        by_why[e["w"]] = by_why.get(e["w"], 0) + 1
+    print("excluded, by reason: " + ", ".join(f"{k} {v}" for k, v in sorted(by_why.items())))
+    near = sorted((e for e in excluded if e["w"] == "thin" and float(e["d"]) >= MIN_ADV_USD / 2e3),
+                  key=lambda e: -float(e["d"]))
+    if near:
+        print(f"\n  {len(near)} name(s) within half of the liquidity floor "
+              f"(${MIN_ADV_USD/1e3:.0f}k/day) — real companies, just thinly traded:")
+        for e in near[:25]:
+            print(f"    {e['t']:<12} {e['n'][:32]:<32} avg daily value ${float(e['d']):>5.0f}k")
+    nodata = [e for e in excluded if e["w"] == "nodata"]
+    if nodata:
+        print(f"\n  {len(nodata)} name(s) returned no price at all (delisted, taken private, "
+              f"or a wrong symbol):")
+        print("    " + ", ".join(e["t"] for e in nodata[:60]) + (" …" if len(nodata) > 60 else ""))
     if misresolved:
         print(f"\n  {len(misresolved)} symbol(s) resolved to something that is not a "
               f"property company — remove or correct these in universe.csv:")
@@ -1086,12 +1170,18 @@ def build(args) -> dict:
         if len(outlier_rows) > 20:
             print(f"   … and {len(outlier_rows) - 20} more")
 
-    liq = [r for r in rows if r["aud"] == "LIQUIDATING"]
+    liq = [r for r in rows if r["aud"] == "UNVERIFIABLE"]
     if liq:
-        print(f"\n{len(liq)} name(s) classified LIQUIDATING — distributions imply an "
-              f"unsustainable yield on their own basis, so no recurring rate is claimed:")
-        for r in liq[:20]:
-            print(f"   {r['t']:<12} {r['n'][:30]:<30} ttm {r['ty']*100:6.2f}%")
+        print(f"\n{len(liq)} name(s) UNVERIFIABLE — distributions imply a yield too high to treat "
+              f"as repeatable, so no recurring rate is claimed (wind-down, asset-sale specials, "
+              f"or a price collapse ahead of a cut — the data cannot say which):")
+        for r in liq[:25]:
+            print(f"   {r['t']:<12} {r['n'][:30]:<30} ttm {r['ty']*100:7.1f}%")
+    sus = [r for r in rows if r["aud"] == "SUSPENDED"]
+    if sus:
+        print(f"\n{len(sus)} name(s) SUSPENDED — paid before, nothing in the last 12 months:")
+        for r in sus[:25]:
+            print(f"   {r['t']:<12} {r['n'][:30]:<30} last paid {r['lp']}")
 
     n_hy = sum(1 for r in rows if r["ry"] >= 0.06)
     n_flag = sum(1 for r in rows if r["ry"] >= 0.06 and r["aud"] in ("SPIKE", "FADE", "ERRATIC"))
@@ -1102,6 +1192,7 @@ def build(args) -> dict:
 
     return {
         "asof": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "excluded": excluded,
         "n": len(rows),
         "min_adv_usd": MIN_ADV_USD,
         "special_mult": SPECIAL_MULT,

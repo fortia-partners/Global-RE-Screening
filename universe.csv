@@ -167,7 +167,7 @@ HMSO.L,Hammerson,GB,Malls,REIT
 SHC.L,Shaftesbury Capital,GB,Retail,REIT
 SUPR.L,Supermarket Income REIT,GB,Retail,REIT
 NRR.L,NewRiver REIT,GB,Retail,REIT
-CAL.L,Capital & Regional,GB,Retail,REIT
+CAL.L,Capital & Regional,GB,Malls,REIT
 PHP.L,Primary Health Properties,GB,Healthcare,REIT
 AGR.L,Assura,GB,Healthcare,REIT
 THRL.L,Target Healthcare REIT,GB,Senior,REIT
@@ -215,10 +215,9 @@ BOOT.L,Henry Boot,GB,Developer,DEVELOPER
 MGNS.L,Morgan Sindall,GB,Developer,DEVELOPER
 KIE.L,Kier Group,GB,Developer,DEVELOPER
 GFRD.L,Galliford Try,GB,Developer,DEVELOPER
-URW.AS,Unibail-Rodamco-Westfield,FR,Malls,REIT
 LI.PA,Klepierre,FR,Malls,REIT
-MERY.PA,Mercialys,FR,Retail,REIT
-CARM.PA,Carmila,FR,Retail,REIT
+MERY.PA,Mercialys,FR,Malls,REIT
+CARM.PA,Carmila,FR,Malls,REIT
 GFC.PA,Gecina,FR,Office,REIT
 COV.PA,Covivio,FR,Diversified,REIT
 ICAD.PA,Icade,FR,Office,REIT
@@ -256,8 +255,8 @@ DMRE.DE,DEMIRE,DE,Office,REIT
 ACC.DE,Accentro Real Estate,DE,Multifamily,REIT
 NUVA.DE,Noratis,DE,Multifamily,REIT
 H5E.DE,Helma Eigenheimbau,DE,Developer,DEVELOPER
-WHA.AS,Wereldhave,NL,Retail,REIT
-ECMPA.AS,Eurocommercial Properties,NL,Retail,REIT
+WHA.AS,Wereldhave,NL,Malls,REIT
+ECMPA.AS,Eurocommercial Properties,NL,Malls,REIT
 VASTN.AS,Vastned Retail,NL,Retail,REIT
 NSI.AS,NSI NV,NL,Office,REIT
 BAMNB.AS,BAM Groep,NL,Developer,DEVELOPER
@@ -276,7 +275,7 @@ HOMI.BR,Home Invest Belgium,BE,Multifamily,REIT
 WEB.BR,Warehouses Estates Belgium,BE,Logistics,REIT
 NEXTA.BR,Nextensa,BE,Diversified,REIT
 MONT.BR,Montea,BE,Logistics,REIT
-WEHB.BR,Wereldhave Belgium,BE,Retail,REIT
+WEHB.BR,Wereldhave Belgium,BE,Malls,REIT
 ATEB.BR,Atenor,BE,Developer,DEVELOPER
 IMMO.BR,Immobel,BE,Developer,DEVELOPER
 MRL.MC,MERLIN Properties,ES,Diversified,REIT
@@ -328,7 +327,7 @@ OLT.OL,Olav Thon Eiendomsselskap,NO,Retail,REIT
 PPI.OL,Public Property Invest,NO,Office,REIT
 SBO.OL,Selvaag Bolig,NO,Developer,DEVELOPER
 KOJAMO.HE,Kojamo,FI,Multifamily,REIT
-CTY1S.HE,Citycon,FI,Retail,REIT
+CTY1S.HE,Citycon,FI,Malls,REIT
 YIT.HE,YIT,FI,Developer,DEVELOPER
 SRV1V.HE,SRV Yhtiot,FI,Developer,DEVELOPER
 INVEST.HE,Investors House,FI,Diversified,REIT
@@ -811,7 +810,7 @@ ORIA.PA,Fiducial Real Estate Sa,FR,,REIT
 PAT.PA,Patrimoine Et Commerce-Regr,FR,Retail,REIT
 SPEL.PA,Fonciere Volta,FR,,REIT
 TAYN.PA,Tayninh,FR,,REIT
-URW.PA,Unibail-Rodamco-Westfield,FR,,REIT
+URW.PA,Unibail-Rodamco-Westfield,FR,Malls,REIT
 VTR.PA,Vitura,FR,,REIT
 2GI.DE,Gieag Immobilien Ag,DE,Diversified,REIT
 88D.DE,Wr Wohnraum Ag,DE,Multifamily,REIT
