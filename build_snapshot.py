@@ -840,7 +840,7 @@ def synth_history(ticker: str) -> pd.DataFrame:
                          "Dividends": divs})
 
 
-def sector_ok(nfo: dict, name: str) -> tuple[bool, str]:
+def sector_ok(nfo: dict, name: str, category: str | None = None) -> tuple[bool, str]:
     """
     Confirm a symbol actually resolved to a property company.
 
@@ -861,6 +861,16 @@ def sector_ok(nfo: dict, name: str) -> tuple[bool, str]:
         return True, "no sector data"          # nothing to judge on; keep it
 
     if "real estate" in sec or "reit" in ind or "real estate" in ind:
+        return True, ""
+    # Hotel operators and owners are a category here on purpose (Marriott, Accor,
+    # IHG, Melia, Scandic...), and Yahoo files them under Consumer Cyclical /
+    # Lodging. This check exists to catch a symbol that resolved to the WRONG
+    # company; for a name placed in a hotel category deliberately, a lodging
+    # company is the right answer, not a mismatch. Without this the whole hotel
+    # operator category was silently emptied on the first live run.
+    if category in ("HotelOp", "Hotels") and (
+            any(k in ind for k in ("lodging", "resorts")) or
+            any(w in got for w in ("hotel", "hoteles", "resort", "hospitality", "lodging"))):
         return True, ""
     # construction and homebuilding sit outside Yahoo's real-estate sector but
     # belong in this universe
@@ -941,7 +951,7 @@ def build(args) -> dict:
             _ex(r, "nodata")
             continue
 
-        ok, why = sector_ok(nfo, r.get("name", ""))
+        ok, why = sector_ok(nfo, r.get("name", ""), r.get("category"))
         if not ok:
             dropped["wrong_sector"] += 1
             misresolved.append(f"{t} ({r.get('name','?')}) — {why}")
