@@ -639,7 +639,7 @@ table.yt td.sp{color:var(--sig)}
       <span class="lbl" data-lbl="Min recurring yield">Min recurring yield</span>
       <div class="rng"><input type="range" id="f-yld" min="0" max="12" step="0.25" value="0"><output id="o-yld">0.00%</output></div>
       <span class="lbl" data-lbl="Min liquidity · ADV" style="display:block;margin-top:12px">Min liquidity · ADV</span>
-      <div class="rng"><input type="range" id="f-adv" min="0" max="4" step="0.1" value="0"><output id="o-adv">$100k</output></div>
+      <div class="rng"><input type="range" id="f-adv" min="0" max="4" step="0.1" value="0"><output id="o-adv">any</output></div>
       <span class="lbl" data-lbl="Min market cap" style="display:block;margin-top:12px">Min market cap</span>
       <div class="rng"><input type="range" id="f-cap" min="0" max="5" step="0.1" value="0"><output id="o-cap">any</output></div>
     </div>
@@ -649,6 +649,7 @@ table.yt td.sp{color:var(--sig)}
       <div class="opt" role="checkbox" aria-checked="false" data-f="cut"><span class="box"></span><span data-lbl="Recently cut">Recently cut</span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="var"><span class="box"></span><span data-lbl="Variable distribution">Variable distribution</span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="outlier"><span class="box"></span><span data-lbl="Statistical outliers">Statistical outliers</span><span class="cnt" id="c-outlier"></span></div>
+      <div class="opt" role="checkbox" aria-checked="false" data-f="thin"><span class="box"></span><span data-lbl="Thinly traded">Thinly traded</span><span class="cnt" id="c-thin"></span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="mortgage"><span class="box"></span><span data-lbl="Mortgage REITs">Mortgage REITs</span></div>
       <div class="opt" role="checkbox" aria-checked="false" data-f="nonreit"><span class="box"></span>Developers &amp; services</div>
     </div>
@@ -1323,6 +1324,7 @@ const T={
     "Non-payers":"Sem dividendo", "Recently cut":"Cortaram recentemente",
     "Variable distribution":"Distribuição variável", "Mortgage REITs":"REITs hipotecários",
     "Statistical outliers":"Outliers estatísticos",
+    "Thinly traded":"Pouca liquidez",
     "Developers & services":"Incorporadoras e serviços",
     Region:"REGIÃO", "Property type":"TIPO DE ATIVO", All:"TODOS", None:"NENHUM",
     "Sort within group":"ORDENAR NO GRUPO", Recurring:"RECORRENTE",
@@ -1401,7 +1403,7 @@ function flags(r){
   }
   if(r.aud==="SUSPENDED") f.push('<span class="f cut" title="Paid in earlier years, nothing in the last 12 months — the dividend is suspended, so no yield is shown">SUSP</span>');
   if(r.aud==="UNVERIFIABLE") f.push('<span class="f cut" title="The distributions imply a yield too high to treat as repeatable (wind-down, asset-sale specials, or a price collapse ahead of a cut). No recurring rate is shown — check the filings">UNV</span>');
-  if(r.thin) f.push(`<span class="f var" title="Average daily value traded is about $${Math.round(r.adv)}k, under the liquidity floor. Kept because it was asked for by name — read prices and yields with that in mind">THIN</span>`);
+  if(r.thin) f.push(`<span class="f var" title="Thinly traded: average daily value is about $${Math.round(r.adv)}k, under $100k. The price may be stale and a yield here may not be achievable at any size — read it with that in mind">THIN</span>`);
   if(r.cut) f.push('<span class="f cut" title="Recurring distribution is more than 10% below its 3-year peak">CUT</span>');
   if(r.var) f.push('<span class="f var" title="Payment size varies materially — the indicated rate is unreliable">VAR</span>');
   if(r.spc>0.05) f.push(`<span class="f spc" title="${Math.round(r.spc*100)}% of the trailing-12m payout was a special, and is excluded from the recurring figure">SPL</span>`);
@@ -1412,7 +1414,7 @@ function flags(r){
 /* ── filter / sort ──────────────────────────────────────────────────── */
 function apply(){
   const q=S.q.trim().toLowerCase();
-  const advMin=S.adv?Math.pow(10,S.adv)*100:0;      // slider 0–4 ⇒ $100k … $1bn
+  const advMin=S.adv?Math.pow(10,S.adv)*1e4:0;      // slider 0–4 ⇒ any, then $100k … $100m
   const capMin=S.cap?Math.pow(10,S.cap)*100:0;      // in $m
   VIEW=ROWS.filter(r=>{
     if(q && !(r.t.toLowerCase().includes(q)||r.n.toLowerCase().includes(q)||
@@ -1427,6 +1429,7 @@ function apply(){
     if(S.flags.has("cut") && r.cut) return false;
     if(S.flags.has("var") && r.var) return false;
     if(S.flags.has("outlier") && r.flag_outlier) return false;
+    if(S.flags.has("thin") && r.thin) return false;
     if(S.flags.has("mortgage") && r.veh==="MORTGAGE") return false;
     if(S.flags.has("nonreit") && (r.veh==="DEVELOPER"||r.veh==="SERVICES")) return false;
     if(S.flags.has("hy6") && r.ry<0.06) return false;
@@ -1495,6 +1498,15 @@ function paintExcluded(){
   el.hidden=!m.length;
   el.innerHTML=m.map(e=>`<div><span class="xl">${(XW[LANG]||XW.en).lead}</span><b>${e.n}</b>`+
     `<span class="xt">${e.t}</span>\u2014 ${excludedWhy(e)}</div>`).join("");
+}
+
+/* Liquidity slider label. Position 0 means no limit; from there it climbs
+   $100k, $1m, $10m, $100m. (The first version labelled and filtered this
+   scale a factor of 1,000 apart.) */
+function advLabel(v){
+  if(!v) return "any";
+  const k=Math.pow(10,v)*10;                       // in $ thousands
+  return k>=1000 ? "$"+(k/1000).toFixed(k>=10000?0:1)+"m" : "$"+Math.round(k)+"k";
 }
 
 const med=a=>{ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y),m=s.length>>1;
@@ -1791,7 +1803,7 @@ function wire(){
     el.addEventListener("input",upd); $(out).textContent=fmt(+el.value);
   };
   rng("#f-yld","#o-yld",v=>v.toFixed(2)+"%","yld");
-  rng("#f-adv","#o-adv",v=>"$"+kk(Math.pow(10,v)*100)+"k","adv");
+  rng("#f-adv","#o-adv",advLabel,"adv");
   rng("#f-cap","#o-cap",v=>v?"$"+money(Math.pow(10,v)*100):"any","cap");
 
 
@@ -1948,6 +1960,7 @@ async function boot(){
   $("#c-hy6").textContent=ROWS.filter(r=>r.ry>=0.06).length;
   $("#c-unver").textContent=ROWS.filter(r=>!r.ver).length;
   $("#c-outlier").textContent=ROWS.filter(r=>r.flag_outlier).length;
+  $("#c-thin").textContent=ROWS.filter(r=>r.thin).length;
   buildRail(); localiseChrome(); renderHead(); wire(); apply(); paintLiveChip();
   $("#t-lang").textContent=LANG==="pt"?"EN":"PT";
 }

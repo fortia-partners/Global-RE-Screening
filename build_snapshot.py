@@ -33,7 +33,12 @@ DATA.mkdir(exist_ok=True)
 CACHE.mkdir(exist_ok=True)
 
 # ── tunables ────────────────────────────────────────────────────────────────
-MIN_ADV_USD = 100_000      # drop anything thinner than this (user's floor)
+# No liquidity floor: illiquid names are INCLUDED and flagged THIN instead. The old
+# floor ($100k a day) silently removed about 300 real companies — Wereldhave
+# Belgium among them. They now carry a THIN badge, and the page has a filter to
+# hide them for anyone who wants the tradeable set only.
+MIN_ADV_USD = 0            # hard floor; 0 keeps everything
+THIN_BELOW_USD = 100_000   # under this average daily value a name is badged THIN
 
 # Regions to build. Names outside these stay in universe.csv but are skipped, so
 # turning a region back on is a one-line edit rather than re-sourcing tickers.
@@ -971,8 +976,8 @@ def build(args) -> dict:
         tail = df.tail(30)
         dv = (tail["Close"] * tail["Volume"]).dropna()
         adv_usd = float(np.median(dv.values)) * to_usd if len(dv) else 0.0
-        thin = adv_usd < MIN_ADV_USD
-        if thin and t not in KEEP_THIN:
+        thin = adv_usd < THIN_BELOW_USD
+        if adv_usd < MIN_ADV_USD and t not in KEEP_THIN:
             dropped["thin"] += 1
             _ex(r, "thin", f"{adv_usd/1e3:.0f}")
             continue
@@ -1205,6 +1210,7 @@ def build(args) -> dict:
         "excluded": excluded,
         "n": len(rows),
         "min_adv_usd": MIN_ADV_USD,
+        "thin_below_usd": THIN_BELOW_USD,
         "special_mult": SPECIAL_MULT,
         "mock": bool(args.mock),
         "fx": {k: round(v, 6) for k, v in fx.items()},
